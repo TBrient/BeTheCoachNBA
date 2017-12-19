@@ -3,10 +3,11 @@
  */
 public class Player {
     private String name;
-    private int rating;
+    private int rating,age;
 
-    public Player(String name, int rating) {
+    public Player(String name, int rating, int age) {
         this.name = name;
         this.rating = rating;
+        this.age = age;
     }
 }
