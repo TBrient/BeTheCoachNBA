@@ -5,9 +5,11 @@ import java.util.ArrayList;
  */
 public class Team {
     private ArrayList<Player> team = new ArrayList<>();
+    private int[] record;
 
     public Team(ArrayList<Player> team) {
         this.team = team;
+        record = new int[2];
     }
 
     public ArrayList<Player> getTeam() {
@@ -20,17 +22,17 @@ public class Team {
 
     public int[] setRecord(){
         int score = 0;
-        int ans[] = new int[2];
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
         }
-        ans[0] = 82 * ( 1 - (score / 40) * 2);
-        ans[1] = 82 - ans[0];
-        return ans;
+        record[0] += (82 * ( 1 - (score / 40) * 2))/8;
+        record[1] = 82/8 - record[0];
+        return record;
     }
     public void simRecords(ArrayList<Team> teams){
         for (int i = 0; i < teams.size(); i++) {
             teams.get(i).setRecord();
         }
     }
+
 }
