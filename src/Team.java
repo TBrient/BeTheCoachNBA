@@ -6,10 +6,20 @@ import java.util.ArrayList;
 public class Team {
     private ArrayList<Player> team = new ArrayList<>();
     private int[] record;
+    private String name;
 
-    public Team(ArrayList<Player> team) {
+    public Team(ArrayList<Player> team, String name) {
         this.team = team;
         record = new int[2];
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<Player> getTeam() {

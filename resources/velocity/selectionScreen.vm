@@ -1,0 +1,144 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+<p>
+<center>
+
+
+</center>
+
+<br>
+<form action="index.cfm" method="POST">
+
+
+<table>
+<tr>
+<td valign="top">
+
+#foreach($teams in $teamSplit)
+    <td valign="top">
+        #foreach($team in $teams)
+            <input type="radio" name="dynastyconference" value="$team.getName()" >$team.getName()<br>
+        #end
+    </td>
+#end
+<!––
+    <input type="radio" name="dynastyconference" value="ACC" >ACC<br>
+
+    <input type="radio" name="dynastyconference" value="America East" >America East<br>
+
+    <input type="radio" name="dynastyconference" value="Atlantic 10 I" >Atlantic 10 I<br>
+
+    <input type="radio" name="dynastyconference" value="Atlantic 10 II" checked>Atlantic 10 II<br>
+
+    <input type="radio" name="dynastyconference" value="Atlantic Sun" >Atlantic Sun<br>
+
+    <input type="radio" name="dynastyconference" value="Big 12 North" >Big 12 North<br>
+
+    <input type="radio" name="dynastyconference" value="Big 12 South" >Big 12 South<br>
+
+    </td><td valign="top">
+
+    <input type="radio" name="dynastyconference" value="Big East I" >Big East I<br>
+
+    <input type="radio" name="dynastyconference" value="Big East II" >Big East II<br>
+
+    <input type="radio" name="dynastyconference" value="Big Sky" >Big Sky<br>
+
+    <input type="radio" name="dynastyconference" value="Big South" >Big South<br>
+
+    <input type="radio" name="dynastyconference" value="Big Ten" >Big Ten<br>
+
+    <input type="radio" name="dynastyconference" value="Colonial" >Colonial<br>
+
+    <input type="radio" name="dynastyconference" value="Conference USA" >Conference USA<br>
+
+    </td><td valign="top">
+
+    <input type="radio" name="dynastyconference" value="Horizon" >Horizon<br>
+
+    <input type="radio" name="dynastyconference" value="Ivy League" >Ivy League<br>
+
+    <input type="radio" name="dynastyconference" value="MAC East" >MAC East<br>
+
+    <input type="radio" name="dynastyconference" value="MAC West" >MAC West<br>
+
+    <input type="radio" name="dynastyconference" value="MEAC I" >MEAC I<br>
+
+    <input type="radio" name="dynastyconference" value="MEAC II" >MEAC II<br>
+
+    <input type="radio" name="dynastyconference" value="Metro Atlantic" >Metro Atlantic<br>
+
+    </td><td valign="top">
+
+    <input type="radio" name="dynastyconference" value="Missouri Valley" >Missouri Valley<br>
+
+    <input type="radio" name="dynastyconference" value="Mountain West" >Mountain West<br>
+
+    <input type="radio" name="dynastyconference" value="Ohio Valley" >Ohio Valley<br>
+
+    <input type="radio" name="dynastyconference" value="PAC-10" >PAC-10<br>
+
+    <input type="radio" name="dynastyconference" value="Patriot" >Patriot<br>
+
+    <input type="radio" name="dynastyconference" value="SEC East" >SEC East<br>
+
+    <input type="radio" name="dynastyconference" value="SEC West" >SEC West<br>
+
+    </td><td valign="top">
+
+    <input type="radio" name="dynastyconference" value="Southern" >Southern<br>
+
+    <input type="radio" name="dynastyconference" value="Southland" >Southland<br>
+
+    <input type="radio" name="dynastyconference" value="Southwestern" >Southwestern<br>
+
+    <input type="radio" name="dynastyconference" value="Summit" >Summit<br>
+
+    <input type="radio" name="dynastyconference" value="Sun Belt" >Sun Belt<br>
+
+    <input type="radio" name="dynastyconference" value="WAC" >WAC<br>
+
+    <input type="radio" name="dynastyconference" value="West Coast" >West Coast<br>
+
+    </td>
+––>
+</tr>
+</table>
+
+
+
+<input type="hidden" name="roster" value="8">
+<p>
+<center>
+<input type="hidden" name="pickconference" value="Select a Conference">
+<input type="image" name="btn1" value="Pick A Conference" src="\buttons\btn1.jpg">
+</center>
+</form>
+
+<center>
+
+</center>
+<p>
+<center>
+<table cellpadding="4">
+<tr>
+<td width="500">
+</td>
+
+</tr>
+<tr>
+<td colspan="2">
+<p>
+<div align=center>
+</div>
+<p>
+</td>
+</tr>
+</table>
+</center>
+
+<p>
+</font>
+</center>
+

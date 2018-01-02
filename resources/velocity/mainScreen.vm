@@ -1,0 +1,66 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+<p>
+<center>
+
+
+</center>
+
+<br>
+<form action="index.cfm" method="POST">
+
+
+<table>
+<tr>
+<td valign="top">
+
+<p>
+    $displayText
+</p>
+#foreach($teams in $teamSplit)
+    <td valign="top">
+        #foreach($team in $teams)
+            <input type="radio" name="dynastyconference" value="$team.getName()" >$team.getName()<br>
+        #end
+    </td>
+#end
+
+</tr>
+</table>
+
+
+
+<input type="hidden" name="roster" value="8">
+<p>
+<center>
+<input type="hidden" name="pickconference" value="Select a Conference">
+<input type="image" name="btn1" value="Pick A Conference" src="\buttons\btn1.jpg">
+</center>
+</form>
+
+<center>
+
+</center>
+<p>
+<center>
+<table cellpadding="4">
+<tr>
+<td width="500">
+</td>
+
+</tr>
+<tr>
+<td colspan="2">
+<p>
+<div align=center>
+</div>
+<p>
+</td>
+</tr>
+</table>
+</center>
+
+<p>
+</font>
+</center>

@@ -1,0 +1,65 @@
+#macro(mainLayout)
+
+<html>
+
+<head>
+<link rel="SHORTCUT ICON" href="http://www.bethecoachbasketball.com/fist.ico"/>
+<link href="btc.css" rel="stylesheet" type="text/css">
+
+<title>BEAT THE COACH NBA Basketball Game</title>
+
+</head>
+
+<body leftmargin=0 topmargin=3 bgcolor="FFA500">
+<div align=center>
+
+
+<table border=0>
+<tr>
+<td align="center" bgcolor="FFA500">
+
+</td>
+</tr>
+<tr>
+<td>
+<table width="1000" border="0" cellpadding="3">
+<tr>
+<td width="180" bgcolor="f0f0f0" valign=top>
+
+<p>
+
+<p>
+
+</td>
+
+<td valign="top" bgcolor="White">
+    $bodyContent
+</td>
+
+<td width="180" bgcolor="f0f0f0" valign=top>
+
+
+
+
+
+<p>
+<p>
+
+</center>
+
+
+
+
+
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+
+</body>
+</html>
