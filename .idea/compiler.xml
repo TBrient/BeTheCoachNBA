@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="BeTheCoachNBA" />
+        <module name="spark-basic-structure" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BeTheCoachNBA" target="1.8" />
+      <module name="spark-basic-structure" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
