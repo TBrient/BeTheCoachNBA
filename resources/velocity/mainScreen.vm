@@ -1,4 +1,4 @@
-#parse("/velocity/layout.vm")
+#parse("/velocity/game.vm")
 #@mainLayout()
 
 <p>
@@ -64,3 +64,4 @@
 <p>
 </font>
 </center>
+#end

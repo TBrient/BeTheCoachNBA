@@ -1,4 +1,5 @@
 #* @implicitly included *#
 #* @vtlvariable name="teams" type="java.util.ArrayList" *#
+#* @vtlvariable name="teamSplit" type="java.util.ArrayList" *#
 #* @vtlvariable name="team" type="Team" *#
 #* @vtlvariable name="displayText" type="java.lang.String" *#
