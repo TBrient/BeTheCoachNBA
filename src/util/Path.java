@@ -15,9 +15,9 @@ public class Path {
 
     public static class Template {
         public static final String HOME = "/velocity/game.vm";
-        public static final String SELECTION = "/velocity/selectionScreen.vm";
+        public static final String SELECTION = "/selectionScreen.vm";
         public static final String MAINSCREEN = "/velocity/mainScreen.vm";
-        public static final String ROSTER = "/velocity/roster.vm";
+        public static final String ROSTER = "/Users/student/IdeaProjects/BeTheCoachNBA/resources/velocity/roster.vm";
     }
 
 }

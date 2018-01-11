@@ -547,7 +547,7 @@ public class Application implements spark.servlet.SparkApplication{
             return ViewController.serveSelectionPage(req, res, allTeams);
         });
         get(Path.Web.ROSTER,       (req, res) -> {
-            return ViewController.serveSelectionPage(req, res, allTeams);
+            return ViewController.serveRoster(req, res, allTeams.get(0));
         });
         redirect.get("*", Path.Web.HOME);
 

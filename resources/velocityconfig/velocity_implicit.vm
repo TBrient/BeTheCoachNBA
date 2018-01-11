@@ -4,3 +4,4 @@
 #* @vtlvariable name="team" type="Team" *#
 #* @vtlvariable name="displayText" type="java.lang.String" *#
 #* @vtlvariable name="roster" type="java.util.ArrayList" *#
+#* @vtlvariable name="player" type="Player" *#

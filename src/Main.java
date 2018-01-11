@@ -247,5 +247,6 @@ public class Main {
         Team Washington_Wizards = new Team(Washington_Wizards_Players, "Washington Wizards");
         allTeams.add(Washington_Wizards);
 
+
     }
 }

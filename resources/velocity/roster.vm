@@ -1,0 +1,64 @@
+#parse("/velocity/game.vm")
+#@mainLayout()
+
+<p>
+<center>
+
+
+</center>
+
+<br>
+<form action="index.cfm" method="POST">
+
+
+<table>
+<tr>
+<td valign="top">
+<!--IMPORTANT-->
+#foreach($player in $roster)
+  <tr>
+    <td>$player.getName()</td>
+    <td>$player.getRating()</td>
+    <td>$player.getAge()</td>
+  </tr>
+#end
+
+</tr>
+</table>
+
+
+
+<input type="hidden" name="roster" value="8">
+<p>
+<center>
+<input type="hidden" name="pickTeam" value="Select a Team">
+<input type="submit" name="btn1" value="Pick A Team">
+</center>
+</form>
+
+<center>
+
+</center>
+<p>
+<center>
+<table cellpadding="4">
+<tr>
+<td width="500">
+</td>
+
+</tr>
+<tr>
+<td colspan="2">
+<p>
+<div align=center>
+</div>
+<p>
+</td>
+</tr>
+</table>
+</center>
+
+<p>
+</font>
+</center>
+#end
