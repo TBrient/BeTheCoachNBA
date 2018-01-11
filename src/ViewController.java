@@ -36,7 +36,7 @@ public class ViewController {
         ArrayList<Player> roster = new ArrayList<>();
         roster = team.getTeam();
 
-        model.put("roster", roster);
+        model.put("team", team);
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }

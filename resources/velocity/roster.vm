@@ -14,12 +14,16 @@
 <table>
 <tr>
 <td valign="top">
+<tr><h3>$team.getName()</h3></tr>
+<br>
+<tr>Pick 5 Players</tr>
 <!--IMPORTANT-->
-#foreach($player in $roster)
+#foreach($player in $team.getTeam())
   <tr>
     <td>$player.getName()</td>
     <td>$player.getRating()</td>
     <td>$player.getAge()</td>
+    <td><input type="checkbox"></td>
   </tr>
 #end
 
