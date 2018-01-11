@@ -6,6 +6,7 @@ import util.ViewUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by student on 12/19/17.
@@ -26,14 +27,19 @@ public class ViewController {
         }
 
 
-        for (int i = 0; i < teams.size(); i++) {
-
-        }
-
         model.put("teamSplit", TeamSplit);
 
         return ViewUtil.render(request, model, Path.Template.SELECTION);
     };
+    public static String serveRoster(Request request, Response response, Team team){
+        Map<String,Object> model = new HashMap<>();
+        ArrayList<Player> roster = new ArrayList<>();
+        roster = team.getTeam();
+
+        model.put("roster", roster);
+
+        return ViewUtil.render(request, model, Path.Template.ROSTER);
+    }
 
     public static String serveOtherPages(Request request, Response response, String displayString) {
 

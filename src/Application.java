@@ -543,6 +543,12 @@ public class Application implements spark.servlet.SparkApplication{
             return ViewController.serveSelectionPage(req, res, allTeams);
         });
 
+        post(Path.Web.SELECTION,       (req, res) -> {
+            return ViewController.serveSelectionPage(req, res, allTeams);
+        });
+        get(Path.Web.ROSTER,       (req, res) -> {
+            return ViewController.serveSelectionPage(req, res, allTeams);
+        });
         redirect.get("*", Path.Web.HOME);
 
 //        get("*",                     ViewUtil.notFound);
