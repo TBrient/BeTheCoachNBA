@@ -1,0 +1,38 @@
+#parse("/velocity/game.vm")
+#@mainLayout()
+
+<p>
+<center>
+
+
+</center>
+
+<br>
+<form action="index.cfm" method="POST">
+
+
+<table>
+<tr>
+<td valign="top">
+<!--IMPORTANT-->
+#set($index = 1)
+#foreach($team in $teams)
+  <tr>
+    <td>$index</td>
+    <td>$team.getName()</td>
+    <td>$team.getWin()</td>
+    <td>$team.getLoss()</td>
+  </tr>
+  #set($index = $index + 1)
+#end
+
+</tr>
+</table>
+
+
+
+<p>
+
+</form>
+
+<center>
