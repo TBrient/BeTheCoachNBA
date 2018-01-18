@@ -11,6 +11,7 @@ public class Path {
         @Getter public static final String SELECTION = "/selection/";
         @Getter public static final String MAINSCREEN = "/main/";
         @Getter public static final String ROSTER = "/roster/";
+        @Getter public static final String GAMEPLAY = "/play/";
     }
 
     public static class Template {
@@ -18,6 +19,8 @@ public class Path {
         public static final String SELECTION = "/velocity/selectionScreen.vm";
         public static final String MAINSCREEN = "/velocity/mainScreen.vm";
         public static final String ROSTER = "/velocity/roster.vm";
+        public static final String GAMEPLAY = "/velocity/play.vm";
+
     }
 
 }

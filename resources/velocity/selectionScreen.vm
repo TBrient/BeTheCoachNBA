@@ -8,7 +8,7 @@
 </center>
 
 <br>
-<form action="index.cfm" method="POST">
+<form method="POST">
 
 
 <table>
@@ -18,7 +18,7 @@
 #foreach($teams in $teamSplit)
     <td valign="top">
         #foreach($team in $teams)
-            <input type="radio" name="dynastyconference" value="$team.getName()" >$team.getName()<br>
+            <input type="radio" name="teamSelection" value="$team.getName()" >$team.getName()<br>
         #end
     </td>
 #end

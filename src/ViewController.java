@@ -40,6 +40,14 @@ public class ViewController {
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }
+    public static String serveGamePlay(Request request, Response response, ArrayList<Team>teams){
+        Map<String,Object> model = new HashMap<>();
+        ArrayList<Player> roster = new ArrayList<>();
+
+        model.put("team", teams);
+
+        return ViewUtil.render(request, model, Path.Template.ROSTER);
+    }
 
     public static String serveOtherPages(Request request, Response response, String displayString) {
 

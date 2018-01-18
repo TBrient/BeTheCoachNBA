@@ -283,7 +283,11 @@ public class Application implements spark.servlet.SparkApplication{
         after("*",                   Filters.addGzipHeader);
     }
 
+    private static Team myTeam = null;
+
     public static void main(String[] args) {
+
+
 
         ArrayList<Team> allTeams = new ArrayList<Team>();
         ArrayList<Player> Htlanta_Aawks_Players = new ArrayList<Player>();
@@ -544,10 +548,20 @@ public class Application implements spark.servlet.SparkApplication{
         });
 
         post(Path.Web.SELECTION,       (req, res) -> {
-            return ViewController.serveSelectionPage(req, res, allTeams);
+            String myTeamName = req.queryParams("teamSelection");
+            for (int i = 0; i < allTeams.size(); i++) {
+                if(myTeamName.equals(allTeams.get(i).getName())) {
+                    myTeam = allTeams.get(i);
+                }
+            }
+            res.redirect(Path.Web.ROSTER);
+            return null;
         });
         get(Path.Web.ROSTER,       (req, res) -> {
-            return ViewController.serveRoster(req, res, allTeams.get(0));
+            return ViewController.serveRoster(req, res, allTeams.get(3));
+        });
+        get(Path.Web.GAMEPLAY,       (req, res) -> {
+            return ViewController.serveGamePlay(req, res, allTeams);
         });
         redirect.get("*", Path.Web.HOME);
 
