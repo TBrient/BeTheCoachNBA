@@ -112,5 +112,4 @@ public class Team {
     public void setLoss(int loss) {
         this.loss = loss;
     }
-
 }
