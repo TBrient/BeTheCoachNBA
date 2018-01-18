@@ -6,12 +6,13 @@ import java.util.Random;
  */
 public class Team {
     private ArrayList<Player> team = new ArrayList<>();
-    private int[] record;
+    private int win,loss;
     private String name;
 
     public Team(ArrayList<Player> team, String name) {
         this.team = team;
-        record = new int[2];
+        this.win = 0;
+        this.loss = 0;
         this.name = name;
     }
 
@@ -31,15 +32,23 @@ public class Team {
         this.team = team;
     }
 
-    public int[] setRecord(){
+    public void setRecord(){
         int score = 0;
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
         }
-        record[0] += (82 * ( 1 - (score / 40) * 2))/8;
-        record[1] = 82/8 - record[0];
-        return record;
+        win += (82 * ( 1 - (score / 40) * 2))/8;
+        loss = 82/8 - win;
     }
+
+    public int getWin() {
+        return win;
+    }
+
+    public int getLoss() {
+        return loss;
+    }
+
     public void simRecords(ArrayList<Team> teams){
         for (int i = 0; i < teams.size(); i++) {
             teams.get(i).setRecord();
