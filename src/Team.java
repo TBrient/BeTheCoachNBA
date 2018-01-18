@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -32,27 +34,34 @@ public class Team {
         this.team = team;
     }
 
-    public void setRecord(){
-        int score = 0;
-        for (int i = 0; i < team.size(); i++) {
-            score += team.get(i).getRating();
+    public ArrayList<Team> simMonth(ArrayList<Team> teams){
+        for (int i = 0; i < teams.size()/2; i++) {
+            teams.get(i).setLoss((int)(Math.random()*12) + teams.get(i).getLoss());
+            teams.get(i).setWin(12 + teams.get(i).getWin()-teams.get(i).getLoss());
         }
-        win += (82 * ( 1 - (score / 40) * 2))/8;
-        loss = 82/8 - win;
-    }
-
-    public int getWin() {
-        return win;
-    }
-
-    public int getLoss() {
-        return loss;
-    }
-
-    public void simRecords(ArrayList<Team> teams){
+        for (int i = teams.size()/2; i < teams.size(); i++) {
+            teams.get(i).setLoss(teams.get(i-teams.size()/2).getLoss());
+            teams.get(i).setWin(teams.get(i-teams.size()/2).getWin());
+        }
         for (int i = 0; i < teams.size(); i++) {
-            teams.get(i).setRecord();
+            int mutate = (int) (Math.random() * 100);
+            if(mutate>25 && mutate <50){
+                teams.get(i).setLoss(teams.get(i).getLoss() - 2);
+                teams.get(i).setWin(teams.get(i).getWin() + 2);
+            }
+            if(mutate>0 && mutate <25){
+                teams.get(i).setLoss(teams.get(i).getLoss() + 2);
+                teams.get(i).setWin(teams.get(i).getWin() - 2);
+            }
         }
+        Collections.sort(teams, new Comparator<Team>() {
+            @Override
+            public int compare(Team o1, Team o2) {
+                return o1.getWin() - o2.getWin();
+            }
+        });
+
+        return teams;
     }
     public String gameScore(Team team1){
         int score = 0;
@@ -74,6 +83,25 @@ public class Team {
             answer = team1.getName() + "defeats " +this.getName() + score1 + "to " + score;
         }
              return answer;
+    }
+    public int getRating(){
+        int rating = 0;
+        for (int i = 0; i < team.size(); i++) {
+            rating+=team.get(i).getRating();
+        }
+        return rating;
+    }
+    public int getWin(){
+        return win;
+    }
+    public void setWin(int win){
+        this.win= win;
+    }
+    public int getLoss(){
+        return loss;
+    }
+    public void setLoss(int loss){
+        this.loss= loss;
     }
 
 }

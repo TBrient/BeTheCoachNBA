@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BeTheCoachNBA.iml" filepath="$PROJECT_DIR$/.idea/BeTheCoachNBA.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BeTheCoachNBA2.iml" filepath="$PROJECT_DIR$/BeTheCoachNBA2.iml" />
       <module fileurl="file://$PROJECT_DIR$/spark-basic-structure.iml" filepath="$PROJECT_DIR$/spark-basic-structure.iml" />
     </modules>
   </component>
