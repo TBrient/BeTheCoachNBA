@@ -36,7 +36,7 @@ public class Team {
 
     public ArrayList<Team> simMonth(ArrayList<Team> teams) {
         for (int i = 0; i < teams.size() / 2; i++) {
-            teams.get(i).setLoss((int) (Math.random() * 12) + teams.get(i).getLoss());
+            teams.get(i).setLoss((int) (Math.random() * 12 - 1) + teams.get(i).getLoss());
             teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
         }
         for (int i = teams.size() / 2; i < teams.size(); i++) {
