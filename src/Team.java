@@ -45,23 +45,25 @@ public class Team {
         }
         for (int i = 0; i < teams.size()-1; i++) {
             int mutate = (int) (Math.random() * 100);
-            if (mutate > 25 && mutate < 50) {
-                teams.get(i).setLoss(teams.get(i).getLoss() - 2);
-                teams.get(i).setWin(teams.get(i).getWin() + 2);
-                teams.get(i+1).setLoss(teams.get(i).getLoss() + 2);
-                teams.get(i+1).setWin(teams.get(i).getWin() - 2);
-            }
-            if (mutate > 0 && mutate < 25) {
-                teams.get(i).setLoss(teams.get(i).getLoss() + 2);
-                teams.get(i).setWin(teams.get(i).getWin() - 2);
-                teams.get(i+1).setLoss(teams.get(i).getLoss() - 2);
-                teams.get(i+1).setWin(teams.get(i).getWin() + 2);
+            if(teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
+                if (mutate > 25 && mutate < 50) {
+                    teams.get(i).setLoss(teams.get(i).getLoss() - 2);
+                    teams.get(i).setWin(teams.get(i).getWin() + 2);
+                    teams.get(i + 1).setLoss(teams.get(i).getLoss() + 2);
+                    teams.get(i + 1).setWin(teams.get(i).getWin() - 2);
+                }
+                if (mutate > 0 && mutate < 25) {
+                    teams.get(i).setLoss(teams.get(i).getLoss() + 2);
+                    teams.get(i).setWin(teams.get(i).getWin() - 2);
+                    teams.get(i + 1).setLoss(teams.get(i).getLoss() - 2);
+                    teams.get(i + 1).setWin(teams.get(i).getWin() + 2);
+                }
             }
         }
         Collections.sort(teams, new Comparator<Team>() {
             @Override
             public int compare(Team o1, Team o2) {
-                return o1.getWin() - o2.getWin();
+                return o1.getLoss() - o2.getLoss();
             }
         });
 
