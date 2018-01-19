@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class Team {
     private ArrayList<Player> team = new ArrayList<>();
-    private int win, loss;
+    private int win, loss, rating;
     private String name;
 
     public Team(ArrayList<Player> team, String name) {
@@ -16,6 +16,7 @@ public class Team {
         this.win = 0;
         this.loss = 0;
         this.name = name;
+        rating = this.getRating();
     }
 
     public String getName() {
@@ -35,8 +36,16 @@ public class Team {
     }
 
     public ArrayList<Team> simMonth(ArrayList<Team> teams) {
+        Collections.sort(teams, new Comparator<Team>() {
+            @Override
+            public int compare(Team o1, Team o2) {
+                //check if right order
+                return o2.getRating() - o1.getRating();
+            }
+        });
+
         for (int i = 0; i < teams.size() / 2; i++) {
-            teams.get(i).setLoss((int) (Math.random() * 12 - 1) + teams.get(i).getLoss());
+            teams.get(i).setLoss((int) (Math.random() * 9 - 1) + teams.get(i).getLoss());
             teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
         }
         for (int i = teams.size() / 2; i < teams.size(); i++) {
@@ -96,6 +105,7 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             rating += team.get(i).getRating();
         }
+        rating = rating/5;
         return rating;
     }
 
