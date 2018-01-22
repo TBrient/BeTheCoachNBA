@@ -284,6 +284,7 @@ public class Application implements spark.servlet.SparkApplication{
     }
 
     private static Team myTeam = null;
+    private static String managerName = "";
 
     public static void main(String[] args) {
 
@@ -554,11 +555,12 @@ public class Application implements spark.servlet.SparkApplication{
                     myTeam = allTeams.get(i);
                 }
             }
+            managerName = req.queryParams("managerName");
             res.redirect(Path.Web.ROSTER);
             return null;
         });
         get(Path.Web.ROSTER,       (req, res) -> {
-            return ViewController.serveRoster(req, res, myTeam);
+            return ViewController.serveRoster(req, res, myTeam, managerName);
         });
         get(Path.Web.GAMEPLAY,       (req, res) -> {
             return ViewController.serveGamePlay(req, res, allTeams);

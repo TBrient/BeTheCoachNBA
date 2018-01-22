@@ -31,11 +31,12 @@ public class ViewController {
 
         return ViewUtil.render(request, model, Path.Template.SELECTION);
     };
-    public static String serveRoster(Request request, Response response, Team team){
+    public static String serveRoster(Request request, Response response, Team team, String manager){
         Map<String,Object> model = new HashMap<>();
         ArrayList<Player> roster = new ArrayList<>();
         roster = team.getTeam();
 
+        model.put("managerName", manager);
         model.put("team", team);
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
