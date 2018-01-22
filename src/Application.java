@@ -558,7 +558,7 @@ public class Application implements spark.servlet.SparkApplication{
             return null;
         });
         get(Path.Web.ROSTER,       (req, res) -> {
-            return ViewController.serveRoster(req, res, allTeams.get(3));
+            return ViewController.serveRoster(req, res, myTeam);
         });
         get(Path.Web.GAMEPLAY,       (req, res) -> {
             return ViewController.serveGamePlay(req, res, allTeams);

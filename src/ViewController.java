@@ -40,13 +40,16 @@ public class ViewController {
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }
-    public static String serveGamePlay(Request request, Response response, ArrayList<Team>teams){
+
+    public static String serveGamePlay(Request request, Response response, ArrayList<Team> teams){
         Map<String,Object> model = new HashMap<>();
         ArrayList<Player> roster = new ArrayList<>();
 
-        model.put("team", teams);
+        ArrayList<Team> scoredTeams = teams.get(0).simMonth(teams);
 
-        return ViewUtil.render(request, model, Path.Template.ROSTER);
+        model.put("teams", scoredTeams);
+
+        return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
 
     public static String serveOtherPages(Request request, Response response, String displayString) {

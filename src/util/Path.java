@@ -19,7 +19,7 @@ public class Path {
         public static final String SELECTION = "/velocity/selectionScreen.vm";
         public static final String MAINSCREEN = "/velocity/mainScreen.vm";
         public static final String ROSTER = "/velocity/roster.vm";
-        public static final String GAMEPLAY = "/velocity/play.vm";
+        public static final String GAMEPLAY = "/velocity/gamePlay.vm";
 
     }
 
