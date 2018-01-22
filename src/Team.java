@@ -40,7 +40,7 @@ public class Team {
             @Override
             public int compare(Team o1, Team o2) {
                 //check if right order
-                return o2.getRating() - o1.getRating();
+                return o2.rating - o1.rating;
             }
         });
 

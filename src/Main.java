@@ -248,9 +248,6 @@ public class Main {
         allTeams.add(Washington_Wizards);
 
 
-        for (int i = 0; i < allTeams.size(); i++) {
-            System.out.println(allTeams.get(i).getRating() - 76);
-        }
 
     }
 }
