@@ -45,15 +45,13 @@ public class Team {
         });
 
         for (int i = 0; i < teams.size() / 2; i++) {
-            if(i<5) {
+            if (i < 5) {
                 teams.get(i).setLoss((int) (Math.random() * 5 - 1) + teams.get(i).getLoss());
                 teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
-            }
-            else if(i < 10){
+            } else if (i < 10) {
                 teams.get(i).setLoss((int) (Math.random() * 7 - 1) + teams.get(i).getLoss());
                 teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
-            }
-            else if(i < teams.size()/2){
+            } else if (i < teams.size() / 2) {
                 teams.get(i).setLoss((int) (Math.random() * 9 - 1) + teams.get(i).getLoss());
                 teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
             }
@@ -62,9 +60,9 @@ public class Team {
             teams.get(i).setLoss(teams.get(i - teams.size() / 2).getLoss());
             teams.get(i).setWin(teams.get(i - teams.size() / 2).getWin());
         }
-        for (int i = 0; i < teams.size()-1; i++) {
+        for (int i = 0; i < teams.size() - 1; i++) {
             int mutate = (int) (Math.random() * 100);
-            if(teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
+            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
                 if (mutate > 25 && mutate < 50) {
                     teams.get(i).setLoss(teams.get(i).getLoss() - 2);
                     teams.get(i).setWin(teams.get(i).getWin() + 2);
@@ -115,7 +113,7 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             rating += team.get(i).getRating();
         }
-        rating = rating/5;
+        rating = rating / 5;
         return rating;
     }
 
