@@ -14,8 +14,8 @@
 <table>
 <tr>
 <td valign="top">
-<tr><h3>$team.getName()</h3></tr>
-<br>
+<tr><h3>Manager: $managerName</h3></tr><br>
+<tr><h3>$team.getName()</h3></tr><br>
 <tr>Pick 5 Players</tr>
 <!--IMPORTANT-->
 #foreach($player in $team.getTeam())
@@ -26,7 +26,6 @@
     <td><input type="checkbox"></td>
   </tr>
 #end
-
 </tr>
 </table>
 
