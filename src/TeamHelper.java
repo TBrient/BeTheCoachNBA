@@ -245,6 +245,31 @@ public class TeamHelper {
         Team Washington_Wizards = new Team(Washington_Wizards_Players, "Washington Wizards");
         allTeams.add(Washington_Wizards);
 
+
+
         return allTeams;
+    }
+    public static ArrayList<Player> getReplacements(){
+        ArrayList<Player> Replacements = new ArrayList<Player>();
+        Replacements.add(new Player("Holden Mugroin",78,19));
+        Replacements.add(new Player("Kan Ming Xu",69,17));
+        Replacements.add(new Player("Hugh Ganus",72,18));
+        Replacements.add(new Player("Jengo Chifuniro",74,21));
+        Replacements.add(new Player("Mwanajuma Gugulethu",73,20));
+        Replacements.add(new Player("Poseidon Poncio",79,22));
+        Replacements.add(new Player("Wilma Dikphit",77,18));
+        Replacements.add(new Player("Barry McKockinner",76,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Pip Len",80,20));
+        Replacements.add(new Player("Dederick Lionel",70,18));
+        Replacements.add(new Player("Deforest Herman",71,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+
+
+
+        return getReplacements();
     }
 }
