@@ -22,15 +22,13 @@
     <td>$player.getName()</td>
     <td>$player.getRating()</td>
     <td>$player.getAge()</td>
-    <td><input type="checkbox"></td>
+    <td><input type="checkbox" name="playerSelection" value="$player.getName()"></td>
   </tr>
 #end
-</tr>
 </table>
 
 
 
-<input type="hidden" name="roster" value="8">
 <p>
 <center>
 <input type="submit" name="btn1" value="Start your SZN">
@@ -53,13 +51,4 @@
 <p>
 <div align=center>
 </div>
-<p>
-</td>
-</tr>
-</table>
-</center>
-
-<p>
-</font>
-</center>
 #end

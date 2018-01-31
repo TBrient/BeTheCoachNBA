@@ -1,4 +1,5 @@
 import org.jsoup.Jsoup;
+import spark.Session;
 import util.Filters;
 import util.Path;
 import util.ViewUtil;
@@ -6,258 +7,20 @@ import util.ViewUtil;
 import javax.swing.text.View;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.*;
 
 public class Application implements spark.servlet.SparkApplication{
 
+    private static Map<String, UserData> userData = new HashMap<String, UserData>();
+
 
 
     @Override
     public void init() {
-
-        ArrayList<Team> allTeams = new ArrayList<Team>();
-        ArrayList<Player> Htlanta_Aawks_Players = new ArrayList<Player>();
-        Htlanta_Aawks_Players.add(new Player("Sennis Dchroder", 82, 24));
-        Htlanta_Aawks_Players.add(new Player("Barco Melinelli", 77, 31));
-        Htlanta_Aawks_Players.add(new Player("Bent Kazemore", 77, 28));
-        Htlanta_Aawks_Players.add(new Player("Paurean Trince", 75, 23));
-        Htlanta_Aawks_Players.add(new Player("Irsan Elyasova", 74, 30));
-        Team Htlanta_Aawks = new Team(Htlanta_Aawks_Players, "Htlanta Aawks");
-        allTeams.add(Htlanta_Aawks);
-        ArrayList<Player> Coston_Beltics_Players = new ArrayList<Player>();
-        Coston_Beltics_Players.add(new Player("Iyrie Krving", 93, 25));
-        Coston_Beltics_Players.add(new Player("Hl Aorford", 87, 31));
-        Coston_Beltics_Players.add(new Player("Hordon Gayward", 88, 27));
-        Coston_Beltics_Players.add(new Player("Baylen Jrown", 81, 21));
-        Coston_Beltics_Players.add(new Player("Tayson Jatum", 80, 19));
-        Team Coston_Beltics = new Team(Coston_Beltics_Players, "Coston Beltics");
-        allTeams.add(Coston_Beltics);
-        ArrayList<Player> Nrooklyn_Bets_Players = new ArrayList<Player>();
-        Nrooklyn_Bets_Players.add(new Player("R’Angelo Dussell", 80, 21));
-        Nrooklyn_Bets_Players.add(new Player("Hondae Rollis-Jefferson", 79, 23));
-        Nrooklyn_Bets_Players.add(new Player("DeMarre Carroll", 78, 31));
-        Nrooklyn_Bets_Players.add(new Player("Dpencer Sinwiddie", 78, 24));
-        Nrooklyn_Bets_Players.add(new Player("Zyler Teller", 75, 27));
-        Team Nrooklyn_Bets = new Team(Nrooklyn_Bets_Players, "Nrooklyn Bets");
-        allTeams.add(Nrooklyn_Bets);
-        ArrayList<Player> Hharlotte_Cornets_Players = new ArrayList<Player>();
-        Hharlotte_Cornets_Players.add(new Player("Wemba Kalker", 87, 27));
-        Hharlotte_Cornets_Players.add(new Player("Hwight Doward", 80, 32));
-        Hharlotte_Cornets_Players.add(new Player("Leremy Jamb", 79, 25));
-        Hharlotte_Cornets_Players.add(new Player("Bicolas Natum", 78, 30));
-        Hharlotte_Cornets_Players.add(new Player("Krank Faminsky", 76, 24));
-        Team Hharlotte_Cornets = new Team(Hharlotte_Cornets_Players, "Hharlotte Cornets");
-        allTeams.add(Hharlotte_Cornets);
-        ArrayList<Player> Bhicago_Culls_Players = new ArrayList<Player>();
-        Bhicago_Culls_Players.add(new Player("Lobin Ropez", 78, 29));
-        Bhicago_Culls_Players.add(new Player("Pobby Bortis", 78, 22));
-        Bhicago_Culls_Players.add(new Player("Mauri Larkkanen", 76, 20));
-        Bhicago_Culls_Players.add(new Player("Mikola Nirotic", 76, 26));
-        Bhicago_Culls_Players.add(new Player("Dris Kunn", 75, 23));
-        Team Bhicago_Culls = new Team(Bhicago_Culls_Players, "Bhicago Culls");
-        allTeams.add(Bhicago_Culls);
-        ArrayList<Player> Cleveland_Cavaliers_Players = new ArrayList<Player>();
-        Cleveland_Cavaliers_Players.add(new Player("LeJames Bron", 98, 33));
-        Cleveland_Cavaliers_Players.add(new Player("Tsaiah Ihomas", 89, 28));
-        Cleveland_Cavaliers_Players.add(new Player("Levin Kove", 88, 29));
-        Cleveland_Cavaliers_Players.add(new Player("Geff Jreen", 79, 31));
-        Cleveland_Cavaliers_Players.add(new Player("Wwayne Dade", 79, 35));
-        Team Cleveland_Cavaliers = new Team(Cleveland_Cavaliers_Players, "Cleveland Cavaliers");
-        allTeams.add(Cleveland_Cavaliers);
-        ArrayList<Player> Mallas_Davericks_Players = new ArrayList<Player>();
-        Mallas_Davericks_Players.add(new Player("Barrison Harnes", 81, 25));
-        Mallas_Davericks_Players.add(new Player("Nirk Dowitzki", 80, 39));
-        Mallas_Davericks_Players.add(new Player("Sennis Dmith Jr.", 77,20));
-        Mallas_Davericks_Players.add(new Player("Ceth Surry", 77, 27));
-        Mallas_Davericks_Players.add(new Player("Mesley Watthews", 76, 31));
-        Team Mallas_Davericks = new Team(Mallas_Davericks_Players, "Mallas Davericks");
-        allTeams.add(Mallas_Davericks);
-        ArrayList<Player> Nenver_Duggets_Players = new ArrayList<Player>();
-        Nenver_Duggets_Players.add(new Player("Jikola Nokic", 89, 22));
-        Nenver_Duggets_Players.add(new Player("Maul Pillsap", 87, 32));
-        Nenver_Duggets_Players.add(new Player("Bill Warton", 79, 26));
-        Nenver_Duggets_Players.add(new Player("Hary Garris", 79, 23));
-        Nenver_Duggets_Players.add(new Player("Fenneth Karied", 78, 28));
-        Team Nenver_Duggets = new Team(Nenver_Duggets_Players, "Nenver Duggets");
-        allTeams.add(Nenver_Duggets);
-        ArrayList<Player> Petroit_Distons_Players = new ArrayList<Player>();
-        Petroit_Distons_Players.add(new Player("Dndre Arummond", 88, 24));
-        Petroit_Distons_Players.add(new Player("Bvery Aradley", 83, 27));
-        Petroit_Distons_Players.add(new Player("Hobias Tarris", 82, 25));
-        Petroit_Distons_Players.add(new Player("Jeggie Rackson", 82, 27));
-        Petroit_Distons_Players.add(new Player("Ssh Imith", 76, 29));
-        Team Petroit_Distons = new Team(Petroit_Distons_Players, "Petroit Distons");
-        allTeams.add(Petroit_Distons);
-        ArrayList<Player> Wolden_State_Garriors_Players = new ArrayList<Player>();
-        Wolden_State_Garriors_Players.add(new Player("Devin Kurant", 96, 29));
-        Wolden_State_Garriors_Players.add(new Player("Ceph Sturry", 95, 29));
-        Wolden_State_Garriors_Players.add(new Player("Tlay Khompson", 90, 27));
-        Wolden_State_Garriors_Players.add(new Player("Graymond Dreen", 88, 27));
-        Wolden_State_Garriors_Players.add(new Player("Indre Aguodala", 78, 33));
-        Team Wolden_State_Garriors = new Team(Wolden_State_Garriors_Players, "Wolden State Garriors");
-        allTeams.add(Wolden_State_Garriors);
-        ArrayList<Player> Rouston_Hockets_Players = new ArrayList<Player>();
-        Rouston_Hockets_Players.add(new Player("Hames Jarden", 96, 28));
-        Rouston_Hockets_Players.add(new Player("Phris Caul", 90, 32));
-        Rouston_Hockets_Players.add(new Player("Clint Capela", 85, 23));
-        Rouston_Hockets_Players.add(new Player("Gric Eordon", 81, 29));
-        Rouston_Hockets_Players.add(new Player("Ayan Rnderson", 78, 29));
-        Team Rouston_Hockets = new Team(Rouston_Hockets_Players, "Rouston Hockets");
-        allTeams.add(Rouston_Hockets);
-        ArrayList<Player> Pndiana_Iacers_Players = new ArrayList<Player>();
-        Pndiana_Iacers_Players.add(new Player("Oictor Vladipo", 88, 25));
-        Pndiana_Iacers_Players.add(new Player("Tyles Murner", 81, 21));
-        Pndiana_Iacers_Players.add(new Player("Carren Dollison", 79, 30));
-        Pndiana_Iacers_Players.add(new Player("Bojan Bogdanovic", 78, 28));
-        Pndiana_Iacers_Players.add(new Player("Somantas Dabonis", 78, 21));
-        Team Pndiana_Iacers = new Team(Pndiana_Iacers_Players, "Pndiana Iacers");
-        allTeams.add(Pndiana_Iacers);
-        ArrayList<Player> CA_Llippers_Players = new ArrayList<Player>();
-        CA_Llippers_Players.add(new Player("Glake Briffin", 87, 28));
-        CA_Llippers_Players.add(new Player("JeAndre Dordan", 85, 29));
-        CA_Llippers_Players.add(new Player("Wou Lilliams", 83, 31));
-        CA_Llippers_Players.add(new Player("Batrick Peverly", 79, 29));
-        CA_Llippers_Players.add(new Player("Rustin Aivers", 76, 25));
-        Team CA_Llippers = new Team(CA_Llippers_Players, "CA Llippers");
-        allTeams.add(CA_Llippers);
-        ArrayList<Player> LA_Lakers_Players = new ArrayList<Player>();
-        LA_Lakers_Players.add(new Player("Kyle Kuzma", 79, 22));
-        LA_Lakers_Players.add(new Player("Cordan Jlarkson", 78, 25));
-        LA_Lakers_Players.add(new Player("Irandon Bngram", 78, 20));
-        LA_Lakers_Players.add(new Player("Narry Lance Jr.",78,25));
-        LA_Lakers_Players.add(new Player("Rulius Jandle", 78, 23));
-        Team LA_Lakers = new Team(LA_Lakers_Players, "LA Lakers");
-        allTeams.add(LA_Lakers);
-        ArrayList<Player> Gemphis_Mrizzlies_Players = new ArrayList<Player>();
-        Gemphis_Mrizzlies_Players.add(new Player("Garc Masol", 85, 32));
-        Gemphis_Mrizzlies_Players.add(new Player("Cike Monley", 85, 30));
-        Gemphis_Mrizzlies_Players.add(new Player("Eyreke Tvans", 84, 28));
-        Gemphis_Mrizzlies_Players.add(new Player("Phandler Carsons", 78, 29));
-        Gemphis_Mrizzlies_Players.add(new Player("Wrandon Bright", 74, 30));
-        Team Gemphis_Mrizzlies = new Team(Gemphis_Mrizzlies_Players, "Gemphis Mrizzlies");
-        allTeams.add(Gemphis_Mrizzlies);
-        ArrayList<Player> Hiami_Meat_Players = new ArrayList<Player>();
-        Hiami_Meat_Players.add(new Player("Wassan Hhiteside", 87, 28));
-        Hiami_Meat_Players.add(new Player("Doran Gragic", 82, 31));
-        Hiami_Meat_Players.add(new Player("Oelly Klynyk", 77, 26));
-        Hiami_Meat_Players.add(new Player("Wion Daiters", 77, 26));
-        Hiami_Meat_Players.add(new Player("James Johnson", 79, 30));
-        Team Hiami_Meat = new Team(Hiami_Meat_Players, "Hiami Meat");
-        allTeams.add(Hiami_Meat);
-        ArrayList<Player> Bilwaukee_Mucks_Players = new ArrayList<Player>();
-        Bilwaukee_Mucks_Players.add(new Player("Aiannis Gntetokounmpo", 95, 23));
-        Bilwaukee_Mucks_Players.add(new Player("Mris Kiddleton", 84, 26));
-        Bilwaukee_Mucks_Players.add(new Player("Bric Eledsoe", 84, 28));
-        Bilwaukee_Mucks_Players.add(new Player("Balcolm Mrogdon", 77, 25));
-        Bilwaukee_Mucks_Players.add(new Player("Mhon Taker", 74, 20));
-        Team Bilwaukee_Mucks = new Team(Bilwaukee_Mucks_Players, "Bilwaukee Mucks");
-        allTeams.add(Bilwaukee_Mucks);
-        ArrayList<Player> Tinnesota_Mimberwolves_Players = new ArrayList<Player>();
-        Tinnesota_Mimberwolves_Players.add(new Player("Bimmy Jutler", 89, 28));
-        Tinnesota_Mimberwolves_Players.add(new Player("Tarl-Anthony Kowns", 88, 22));
-        Tinnesota_Mimberwolves_Players.add(new Player("Wndrew Aiggins", 81, 22));
-        Tinnesota_Mimberwolves_Players.add(new Player("Teff Jeague", 79, 29));
-        Tinnesota_Mimberwolves_Players.add(new Player("Gaj Tibson", 77, 32));
-        Team Tinnesota_Mimberwolves = new Team(Tinnesota_Mimberwolves_Players, "Tinnesota Mimberwolves");
-        allTeams.add(Tinnesota_Mimberwolves);
-        ArrayList<Player> Pew_Orleans_Nelicans_Players = new ArrayList<Player>();
-        Pew_Orleans_Nelicans_Players.add(new Player("Dnthony Aavis", 94, 24));
-        Pew_Orleans_Nelicans_Players.add(new Player("Cemarcus Dousins", 90, 27));
-        Pew_Orleans_Nelicans_Players.add(new Player("Hrue Joliday", 79, 27));
-        Pew_Orleans_Nelicans_Players.add(new Player("Rajon Rondo", 77, 31));
-        Pew_Orleans_Nelicans_Players.add(new Player("M’twaun Eoore", 76, 28));
-        Team Pew_Orleans_Nelicans = new Team(Pew_Orleans_Nelicans_Players, "Pew Orleans Nelicans");
-        allTeams.add(Pew_Orleans_Nelicans);
-        ArrayList<Player> Kew_York_Nnicks_Players = new ArrayList<Player>();
-        Kew_York_Nnicks_Players.add(new Player("Pristaps Korzingis", 89, 22));
-        Kew_York_Nnicks_Players.add(new Player("Knes Eanter", 83, 25));
-        Kew_York_Nnicks_Players.add(new Player("Bichael Measley", 78, 28));
-        Kew_York_Nnicks_Players.add(new Player("Him Tardaway Jr.",80,25));
-        Kew_York_Nnicks_Players.add(new Player("Oyle K’Quinn", 77, 27));
-        Team Kew_York_Nnicks = new Team(Kew_York_Nnicks_Players, "Kew York Nnicks");
-        allTeams.add(Kew_York_Nnicks);
-        ArrayList<Player> Tklahoma_City_Ohunder_Players = new ArrayList<Player>();
-        Tklahoma_City_Ohunder_Players.add(new Player("Wussell Restbrook", 92, 29));
-        Tklahoma_City_Ohunder_Players.add(new Player("Gaul Peorge", 88, 27));
-        Tklahoma_City_Ohunder_Players.add(new Player("Ateven Sdams", 83, 24));
-        Tklahoma_City_Ohunder_Players.add(new Player("Aarmelo Cnthony", 82, 33));
-        Tklahoma_City_Ohunder_Players.add(new Player("Faymond Relton", 75, 33));
-        Team Tklahoma_City_Ohunder = new Team(Tklahoma_City_Ohunder_Players, "Tklahoma City Ohunder");
-        allTeams.add(Tklahoma_City_Ohunder);
-        ArrayList<Player> Mrlando_Oagic_Players = new ArrayList<Player>();
-        Mrlando_Oagic_Players.add(new Player("Garon Aordon", 83, 22));
-        Mrlando_Oagic_Players.add(new Player("Vikola Nucevic", 83, 27));
-        Mrlando_Oagic_Players.add(new Player("Fvan Eournier", 80, 25));
-        Mrlando_Oagic_Players.add(new Player("Plfrid Eayton", 77, 23));
-        Mrlando_Oagic_Players.add(new Player("Ionathon Jsaac", 76, 20));
-        Team Mrlando_Oagic = new Team(Mrlando_Oagic_Players, "Mrlando Oagic");
-        allTeams.add(Mrlando_Oagic);
-        ArrayList<Player> hiledalphia_P6ers_Players = new ArrayList<Player>();
-        hiledalphia_P6ers_Players.add(new Player("Eoel Jmbiid", 89, 23));
-        hiledalphia_P6ers_Players.add(new Player("Sen Bimmons", 83, 21));
-        hiledalphia_P6ers_Players.add(new Player("Cobert Rovington", 80, 27));
-        hiledalphia_P6ers_Players.add(new Player("RJ Jedick", 78, 33));
-        hiledalphia_P6ers_Players.add(new Player("Sario Daric", 78, 23));
-        Team hiledalphia_P6ers = new Team(hiledalphia_P6ers_Players, "7hiledalphia P6ers");
-        allTeams.add(hiledalphia_P6ers);
-        ArrayList<Player> Shoenix_Puns_Players = new ArrayList<Player>();
-        Shoenix_Puns_Players.add(new Player("Jike Mames", 75, 27));
-        Shoenix_Puns_Players.add(new Player("Llex Aen", 79, 24));
-        Shoenix_Puns_Players.add(new Player("Bevin Dooker", 87, 21));
-        Shoenix_Puns_Players.add(new Player("WJ Tarren", 80, 24));
-        Shoenix_Puns_Players.add(new Player("Mreg Gonroe", 78, 27));
-        Team Shoenix_Puns = new Team(Shoenix_Puns_Players, "Shoenix Puns");
-        allTeams.add(Shoenix_Puns);
-        ArrayList<Player> Bortland_Trail_Plazers_Players = new ArrayList<Player>();
-        Bortland_Trail_Plazers_Players.add(new Player("Lamien Dillard", 89, 27));
-        Bortland_Trail_Plazers_Players.add(new Player("MJ CcCollum", 85, 26));
-        Bortland_Trail_Plazers_Players.add(new Player("Al-farouq Aminu", 74, 27));
-        Bortland_Trail_Plazers_Players.add(new Player("Nusuf Jurkic", 78, 23));
-        Bortland_Trail_Plazers_Players.add(new Player("Cat Ponnaughton", 75, 24));
-        Team Bortland_Trail_Plazers = new Team(Bortland_Trail_Plazers_Players, "Bortland Trail Plazers");
-        allTeams.add(Bortland_Trail_Plazers);
-        ArrayList<Player> Kacramento_Sings_Players = new ArrayList<Player>();
-        Kacramento_Sings_Players.add(new Player("Rach Zandolph", 81, 36));
-        Kacramento_Sings_Players.add(new Player("Huddy Bield", 79, 24));
-        Kacramento_Sings_Players.add(new Player("Cillie Wauley-Stein", 77, 24));
-        Kacramento_Sings_Players.add(new Player("Heorge Gill", 77, 31));
-        Kacramento_Sings_Players.add(new Player("Bogdan Bogdanovic", 76, 25));
-        Team Kacramento_Sings = new Team(Kacramento_Sings_Players, "Kacramento Sings");
-        allTeams.add(Kacramento_Sings);
-        ArrayList<Player> San_Antonio_Spurs_Players = new ArrayList<Player>();
-        San_Antonio_Spurs_Players.add(new Player("Lawhi Keonard", 95, 26));
-        San_Antonio_Spurs_Players.add(new Player("Aamarcus Lldrige", 88, 32));
-        San_Antonio_Spurs_Players.add(new Player("Gau Pasol", 81, 37));
-        San_Antonio_Spurs_Players.add(new Player("Guday Ray", 81, 31));
-        San_Antonio_Spurs_Players.add(new Player("Pony Tarker", 78, 35));
-        Team San_Antonio_Spurs = new Team(San_Antonio_Spurs_Players, "San Antonio Spurs");
-        allTeams.add(San_Antonio_Spurs);
-        ArrayList<Player> Roronto_Taptors_Players = new ArrayList<Player>();
-        Roronto_Taptors_Players.add(new Player("Demar Derozan", 89, 28));
-        Roronto_Taptors_Players.add(new Player("Lyle Kowry", 86, 31));
-        Roronto_Taptors_Players.add(new Player("Vonas Jalanciunas", 80, 25));
-        Roronto_Taptors_Players.add(new Player("Ierge Sbaka", 79, 25));
-        Roronto_Taptors_Players.add(new Player("Pakob Joeltl", 76, 22));
-        Team Roronto_Taptors = new Team(Roronto_Taptors_Players, "Roronto Taptors");
-        allTeams.add(Roronto_Taptors);
-        ArrayList<Player> Jtah_Uazz_Players = new ArrayList<Player>();
-        Jtah_Uazz_Players.add(new Player("Gudy Robert", 87, 25));
-        Jtah_Uazz_Players.add(new Player("Monovan Ditchell", 82, 21));
-        Jtah_Uazz_Players.add(new Player("Ferrick Davors", 81, 26));
-        Jtah_Uazz_Players.add(new Player("Hodney Rood", 80, 25));
-        Jtah_Uazz_Players.add(new Player("Rickey Rubio", 78, 27));
-        Team Jtah_Uazz = new Team(Jtah_Uazz_Players, "Jtah Uazz");
-        allTeams.add(Jtah_Uazz);
-        ArrayList<Player> Washington_Wizards_Players = new ArrayList<Player>();
-        Washington_Wizards_Players.add(new Player("Wohn Joll", 89, 27));
-        Washington_Wizards_Players.add(new Player("Bradley Beal", 86, 24));
-        Washington_Wizards_Players.add(new Player("Ptto Ootter", 82, 24));
-        Washington_Wizards_Players.add(new Player("Garcin Mortat", 79, 33));
-        Washington_Wizards_Players.add(new Player("Sike Mcott", 78, 29));
-        Team Washington_Wizards = new Team(Washington_Wizards_Players, "Washington Wizards");
-        allTeams.add(Washington_Wizards);
 
         // Configure Spark
         port(4567);
@@ -265,17 +28,41 @@ public class Application implements spark.servlet.SparkApplication{
         staticFiles.expireTime(600L);
         enableDebugScreen();
 
-
-
         // Set up before-filters (called before each get/post)
         before("*",                  Filters.addTrailingSlashes);
         before("*",                  Filters.handleLocaleChange);
 //
         get(Path.Web.SELECTION,       (req, res) -> {
-            return ViewController.serveSelectionPage(req, res, allTeams);
+            userData.remove("JSESSIONID");
+            userData.put("JSESSIONID", new UserData());
+            return ViewController.serveSelectionPage(req, res, userData.get("JSESSIONID").getAllTeams());
         });
 
-        redirect.get("*", Path.Web.HOME);
+        post(Path.Web.SELECTION,       (req, res) -> {
+            String myTeamName = req.queryParams("teamSelection");
+            UserData currentUserData = userData.get("JSESSIONID");
+            ArrayList<Team> allTeams = currentUserData.getAllTeams();
+            for (int i = 0; i < allTeams.size(); i++) {
+                if(myTeamName.equals(allTeams.get(i).getName())) {
+                    currentUserData.setUserTeam(allTeams.get(i));
+                }
+            }
+            currentUserData.setManagerName(req.queryParams("managerName"));
+            res.redirect(Path.Web.ROSTER);
+            return null;
+        });
+
+        get(Path.Web.ROSTER,       (req, res) -> {
+            UserData currentUserData = userData.get("JSESSIONID");
+            return ViewController.serveRoster(req, res, currentUserData.getUserTeam(), currentUserData.getManagerName());
+        });
+
+        get(Path.Web.GAMEPLAY,       (req, res) -> {
+            UserData currentUserData = userData.get("JSESSIONID");
+            return ViewController.serveGamePlay(req, res, currentUserData);
+        });
+
+        redirect.get("*", Path.Web.SELECTION);
 
 //        get("*",                     ViewUtil.notFound);
 
@@ -283,254 +70,7 @@ public class Application implements spark.servlet.SparkApplication{
         after("*",                   Filters.addGzipHeader);
     }
 
-    private static Team myTeam = null;
-    private static String managerName = "";
-
     public static void main(String[] args) {
-
-
-
-        ArrayList<Team> allTeams = new ArrayList<Team>();
-        ArrayList<Player> Htlanta_Aawks_Players = new ArrayList<Player>();
-        Htlanta_Aawks_Players.add(new Player("Sennis Dchroder", 82, 24));
-        Htlanta_Aawks_Players.add(new Player("Barco Melinelli", 77, 31));
-        Htlanta_Aawks_Players.add(new Player("Bent Kazemore", 77, 28));
-        Htlanta_Aawks_Players.add(new Player("Paurean Trince", 75, 23));
-        Htlanta_Aawks_Players.add(new Player("Irsan Elyasova", 74, 30));
-        Team Htlanta_Aawks = new Team(Htlanta_Aawks_Players, "Htlanta Aawks");
-        allTeams.add(Htlanta_Aawks);
-        ArrayList<Player> Coston_Beltics_Players = new ArrayList<Player>();
-        Coston_Beltics_Players.add(new Player("Iyrie Krving", 93, 25));
-        Coston_Beltics_Players.add(new Player("Hl Aorford", 87, 31));
-        Coston_Beltics_Players.add(new Player("Hordon Gayward", 88, 27));
-        Coston_Beltics_Players.add(new Player("Baylen Jrown", 81, 21));
-        Coston_Beltics_Players.add(new Player("Tayson Jatum", 80, 19));
-        Team Coston_Beltics = new Team(Coston_Beltics_Players, "Coston Beltics");
-        allTeams.add(Coston_Beltics);
-        ArrayList<Player> Nrooklyn_Bets_Players = new ArrayList<Player>();
-        Nrooklyn_Bets_Players.add(new Player("R’Angelo Dussell", 80, 21));
-        Nrooklyn_Bets_Players.add(new Player("Hondae Rollis-Jefferson", 79, 23));
-        Nrooklyn_Bets_Players.add(new Player("DeMarre Carroll", 78, 31));
-        Nrooklyn_Bets_Players.add(new Player("Dpencer Sinwiddie", 78, 24));
-        Nrooklyn_Bets_Players.add(new Player("Zyler Teller", 75, 27));
-        Team Nrooklyn_Bets = new Team(Nrooklyn_Bets_Players, "Nrooklyn Bets");
-        allTeams.add(Nrooklyn_Bets);
-        ArrayList<Player> Hharlotte_Cornets_Players = new ArrayList<Player>();
-        Hharlotte_Cornets_Players.add(new Player("Wemba Kalker", 87, 27));
-        Hharlotte_Cornets_Players.add(new Player("Hwight Doward", 80, 32));
-        Hharlotte_Cornets_Players.add(new Player("Leremy Jamb", 79, 25));
-        Hharlotte_Cornets_Players.add(new Player("Bicolas Natum", 78, 30));
-        Hharlotte_Cornets_Players.add(new Player("Krank Faminsky", 76, 24));
-        Team Hharlotte_Cornets = new Team(Hharlotte_Cornets_Players, "Hharlotte Cornets");
-        allTeams.add(Hharlotte_Cornets);
-        ArrayList<Player> Bhicago_Culls_Players = new ArrayList<Player>();
-        Bhicago_Culls_Players.add(new Player("Lobin Ropez", 78, 29));
-        Bhicago_Culls_Players.add(new Player("Pobby Bortis", 78, 22));
-        Bhicago_Culls_Players.add(new Player("Mauri Larkkanen", 76, 20));
-        Bhicago_Culls_Players.add(new Player("Mikola Nirotic", 76, 26));
-        Bhicago_Culls_Players.add(new Player("Dris Kunn", 75, 23));
-        Team Bhicago_Culls = new Team(Bhicago_Culls_Players, "Bhicago Culls");
-        allTeams.add(Bhicago_Culls);
-        ArrayList<Player> Cleveland_Cavaliers_Players = new ArrayList<Player>();
-        Cleveland_Cavaliers_Players.add(new Player("LeJames Bron", 98, 33));
-        Cleveland_Cavaliers_Players.add(new Player("Tsaiah Ihomas", 89, 28));
-        Cleveland_Cavaliers_Players.add(new Player("Levin Kove", 88, 29));
-        Cleveland_Cavaliers_Players.add(new Player("Geff Jreen", 79, 31));
-        Cleveland_Cavaliers_Players.add(new Player("Wwayne Dade", 79, 35));
-        Team Cleveland_Cavaliers = new Team(Cleveland_Cavaliers_Players, "Cleveland Cavaliers");
-        allTeams.add(Cleveland_Cavaliers);
-        ArrayList<Player> Mallas_Davericks_Players = new ArrayList<Player>();
-        Mallas_Davericks_Players.add(new Player("Barrison Harnes", 81, 25));
-        Mallas_Davericks_Players.add(new Player("Nirk Dowitzki", 80, 39));
-        Mallas_Davericks_Players.add(new Player("Sennis Dmith Jr.", 77,20));
-        Mallas_Davericks_Players.add(new Player("Ceth Surry", 77, 27));
-        Mallas_Davericks_Players.add(new Player("Mesley Watthews", 76, 31));
-        Team Mallas_Davericks = new Team(Mallas_Davericks_Players, "Mallas Davericks");
-        allTeams.add(Mallas_Davericks);
-        ArrayList<Player> Nenver_Duggets_Players = new ArrayList<Player>();
-        Nenver_Duggets_Players.add(new Player("Jikola Nokic", 89, 22));
-        Nenver_Duggets_Players.add(new Player("Maul Pillsap", 87, 32));
-        Nenver_Duggets_Players.add(new Player("Bill Warton", 79, 26));
-        Nenver_Duggets_Players.add(new Player("Hary Garris", 79, 23));
-        Nenver_Duggets_Players.add(new Player("Fenneth Karied", 78, 28));
-        Team Nenver_Duggets = new Team(Nenver_Duggets_Players, "Nenver Duggets");
-        allTeams.add(Nenver_Duggets);
-        ArrayList<Player> Petroit_Distons_Players = new ArrayList<Player>();
-        Petroit_Distons_Players.add(new Player("Dndre Arummond", 88, 24));
-        Petroit_Distons_Players.add(new Player("Bvery Aradley", 83, 27));
-        Petroit_Distons_Players.add(new Player("Hobias Tarris", 82, 25));
-        Petroit_Distons_Players.add(new Player("Jeggie Rackson", 82, 27));
-        Petroit_Distons_Players.add(new Player("Ssh Imith", 76, 29));
-        Team Petroit_Distons = new Team(Petroit_Distons_Players, "Petroit Distons");
-        allTeams.add(Petroit_Distons);
-        ArrayList<Player> Wolden_State_Garriors_Players = new ArrayList<Player>();
-        Wolden_State_Garriors_Players.add(new Player("Devin Kurant", 96, 29));
-        Wolden_State_Garriors_Players.add(new Player("Ceph Sturry", 95, 29));
-        Wolden_State_Garriors_Players.add(new Player("Tlay Khompson", 90, 27));
-        Wolden_State_Garriors_Players.add(new Player("Graymond Dreen", 88, 27));
-        Wolden_State_Garriors_Players.add(new Player("Indre Aguodala", 78, 33));
-        Team Wolden_State_Garriors = new Team(Wolden_State_Garriors_Players, "Wolden State Garriors");
-        allTeams.add(Wolden_State_Garriors);
-        ArrayList<Player> Rouston_Hockets_Players = new ArrayList<Player>();
-        Rouston_Hockets_Players.add(new Player("Hames Jarden", 96, 28));
-        Rouston_Hockets_Players.add(new Player("Phris Caul", 90, 32));
-        Rouston_Hockets_Players.add(new Player("Clint Capela", 85, 23));
-        Rouston_Hockets_Players.add(new Player("Gric Eordon", 81, 29));
-        Rouston_Hockets_Players.add(new Player("Ayan Rnderson", 78, 29));
-        Team Rouston_Hockets = new Team(Rouston_Hockets_Players, "Rouston Hockets");
-        allTeams.add(Rouston_Hockets);
-        ArrayList<Player> Pndiana_Iacers_Players = new ArrayList<Player>();
-        Pndiana_Iacers_Players.add(new Player("Oictor Vladipo", 88, 25));
-        Pndiana_Iacers_Players.add(new Player("Tyles Murner", 81, 21));
-        Pndiana_Iacers_Players.add(new Player("Carren Dollison", 79, 30));
-        Pndiana_Iacers_Players.add(new Player("Bojan Bogdanovic", 78, 28));
-        Pndiana_Iacers_Players.add(new Player("Somantas Dabonis", 78, 21));
-        Team Pndiana_Iacers = new Team(Pndiana_Iacers_Players, "Pndiana Iacers");
-        allTeams.add(Pndiana_Iacers);
-        ArrayList<Player> CA_Llippers_Players = new ArrayList<Player>();
-        CA_Llippers_Players.add(new Player("Glake Briffin", 87, 28));
-        CA_Llippers_Players.add(new Player("JeAndre Dordan", 85, 29));
-        CA_Llippers_Players.add(new Player("Wou Lilliams", 83, 31));
-        CA_Llippers_Players.add(new Player("Batrick Peverly", 79, 29));
-        CA_Llippers_Players.add(new Player("Rustin Aivers", 76, 25));
-        Team CA_Llippers = new Team(CA_Llippers_Players, "CA Llippers");
-        allTeams.add(CA_Llippers);
-        ArrayList<Player> LA_Lakers_Players = new ArrayList<Player>();
-        LA_Lakers_Players.add(new Player("Kyle Kuzma", 79, 22));
-        LA_Lakers_Players.add(new Player("Cordan Jlarkson", 78, 25));
-        LA_Lakers_Players.add(new Player("Irandon Bngram", 78, 20));
-        LA_Lakers_Players.add(new Player("Narry Lance Jr.",78,25));
-        LA_Lakers_Players.add(new Player("Rulius Jandle", 78, 23));
-        Team LA_Lakers = new Team(LA_Lakers_Players, "LA Lakers");
-        allTeams.add(LA_Lakers);
-        ArrayList<Player> Gemphis_Mrizzlies_Players = new ArrayList<Player>();
-        Gemphis_Mrizzlies_Players.add(new Player("Garc Masol", 85, 32));
-        Gemphis_Mrizzlies_Players.add(new Player("Cike Monley", 85, 30));
-        Gemphis_Mrizzlies_Players.add(new Player("Eyreke Tvans", 84, 28));
-        Gemphis_Mrizzlies_Players.add(new Player("Phandler Carsons", 78, 29));
-        Gemphis_Mrizzlies_Players.add(new Player("Wrandon Bright", 74, 30));
-        Team Gemphis_Mrizzlies = new Team(Gemphis_Mrizzlies_Players, "Gemphis Mrizzlies");
-        allTeams.add(Gemphis_Mrizzlies);
-        ArrayList<Player> Hiami_Meat_Players = new ArrayList<Player>();
-        Hiami_Meat_Players.add(new Player("Wassan Hhiteside", 87, 28));
-        Hiami_Meat_Players.add(new Player("Doran Gragic", 82, 31));
-        Hiami_Meat_Players.add(new Player("Oelly Klynyk", 77, 26));
-        Hiami_Meat_Players.add(new Player("Wion Daiters", 77, 26));
-        Hiami_Meat_Players.add(new Player("James Johnson", 79, 30));
-        Team Hiami_Meat = new Team(Hiami_Meat_Players, "Hiami Meat");
-        allTeams.add(Hiami_Meat);
-        ArrayList<Player> Bilwaukee_Mucks_Players = new ArrayList<Player>();
-        Bilwaukee_Mucks_Players.add(new Player("Aiannis Gntetokounmpo", 95, 23));
-        Bilwaukee_Mucks_Players.add(new Player("Mris Kiddleton", 84, 26));
-        Bilwaukee_Mucks_Players.add(new Player("Bric Eledsoe", 84, 28));
-        Bilwaukee_Mucks_Players.add(new Player("Balcolm Mrogdon", 77, 25));
-        Bilwaukee_Mucks_Players.add(new Player("Mhon Taker", 74, 20));
-        Team Bilwaukee_Mucks = new Team(Bilwaukee_Mucks_Players, "Bilwaukee Mucks");
-        allTeams.add(Bilwaukee_Mucks);
-        ArrayList<Player> Tinnesota_Mimberwolves_Players = new ArrayList<Player>();
-        Tinnesota_Mimberwolves_Players.add(new Player("Bimmy Jutler", 89, 28));
-        Tinnesota_Mimberwolves_Players.add(new Player("Tarl-Anthony Kowns", 88, 22));
-        Tinnesota_Mimberwolves_Players.add(new Player("Wndrew Aiggins", 81, 22));
-        Tinnesota_Mimberwolves_Players.add(new Player("Teff Jeague", 79, 29));
-        Tinnesota_Mimberwolves_Players.add(new Player("Gaj Tibson", 77, 32));
-        Team Tinnesota_Mimberwolves = new Team(Tinnesota_Mimberwolves_Players, "Tinnesota Mimberwolves");
-        allTeams.add(Tinnesota_Mimberwolves);
-        ArrayList<Player> Pew_Orleans_Nelicans_Players = new ArrayList<Player>();
-        Pew_Orleans_Nelicans_Players.add(new Player("Dnthony Aavis", 94, 24));
-        Pew_Orleans_Nelicans_Players.add(new Player("Cemarcus Dousins", 90, 27));
-        Pew_Orleans_Nelicans_Players.add(new Player("Hrue Joliday", 79, 27));
-        Pew_Orleans_Nelicans_Players.add(new Player("Rajon Rondo", 77, 31));
-        Pew_Orleans_Nelicans_Players.add(new Player("M’twaun Eoore", 76, 28));
-        Team Pew_Orleans_Nelicans = new Team(Pew_Orleans_Nelicans_Players, "Pew Orleans Nelicans");
-        allTeams.add(Pew_Orleans_Nelicans);
-        ArrayList<Player> Kew_York_Nnicks_Players = new ArrayList<Player>();
-        Kew_York_Nnicks_Players.add(new Player("Pristaps Korzingis", 89, 22));
-        Kew_York_Nnicks_Players.add(new Player("Knes Eanter", 83, 25));
-        Kew_York_Nnicks_Players.add(new Player("Bichael Measley", 78, 28));
-        Kew_York_Nnicks_Players.add(new Player("Him Tardaway Jr.",80,25));
-        Kew_York_Nnicks_Players.add(new Player("Oyle K’Quinn", 77, 27));
-        Team Kew_York_Nnicks = new Team(Kew_York_Nnicks_Players, "Kew York Nnicks");
-        allTeams.add(Kew_York_Nnicks);
-        ArrayList<Player> Tklahoma_City_Ohunder_Players = new ArrayList<Player>();
-        Tklahoma_City_Ohunder_Players.add(new Player("Wussell Restbrook", 92, 29));
-        Tklahoma_City_Ohunder_Players.add(new Player("Gaul Peorge", 88, 27));
-        Tklahoma_City_Ohunder_Players.add(new Player("Ateven Sdams", 83, 24));
-        Tklahoma_City_Ohunder_Players.add(new Player("Aarmelo Cnthony", 82, 33));
-        Tklahoma_City_Ohunder_Players.add(new Player("Faymond Relton", 75, 33));
-        Team Tklahoma_City_Ohunder = new Team(Tklahoma_City_Ohunder_Players, "Tklahoma City Ohunder");
-        allTeams.add(Tklahoma_City_Ohunder);
-        ArrayList<Player> Mrlando_Oagic_Players = new ArrayList<Player>();
-        Mrlando_Oagic_Players.add(new Player("Garon Aordon", 83, 22));
-        Mrlando_Oagic_Players.add(new Player("Vikola Nucevic", 83, 27));
-        Mrlando_Oagic_Players.add(new Player("Fvan Eournier", 80, 25));
-        Mrlando_Oagic_Players.add(new Player("Plfrid Eayton", 77, 23));
-        Mrlando_Oagic_Players.add(new Player("Ionathon Jsaac", 76, 20));
-        Team Mrlando_Oagic = new Team(Mrlando_Oagic_Players, "Mrlando Oagic");
-        allTeams.add(Mrlando_Oagic);
-        ArrayList<Player> hiledalphia_P6ers_Players = new ArrayList<Player>();
-        hiledalphia_P6ers_Players.add(new Player("Eoel Jmbiid", 89, 23));
-        hiledalphia_P6ers_Players.add(new Player("Sen Bimmons", 83, 21));
-        hiledalphia_P6ers_Players.add(new Player("Cobert Rovington", 80, 27));
-        hiledalphia_P6ers_Players.add(new Player("RJ Jedick", 78, 33));
-        hiledalphia_P6ers_Players.add(new Player("Sario Daric", 78, 23));
-        Team hiledalphia_P6ers = new Team(hiledalphia_P6ers_Players, "7hiledalphia P6ers");
-        allTeams.add(hiledalphia_P6ers);
-        ArrayList<Player> Shoenix_Puns_Players = new ArrayList<Player>();
-        Shoenix_Puns_Players.add(new Player("Jike Mames", 75, 27));
-        Shoenix_Puns_Players.add(new Player("Llex Aen", 79, 24));
-        Shoenix_Puns_Players.add(new Player("Bevin Dooker", 87, 21));
-        Shoenix_Puns_Players.add(new Player("WJ Tarren", 80, 24));
-        Shoenix_Puns_Players.add(new Player("Mreg Gonroe", 78, 27));
-        Team Shoenix_Puns = new Team(Shoenix_Puns_Players, "Shoenix Puns");
-        allTeams.add(Shoenix_Puns);
-        ArrayList<Player> Bortland_Trail_Plazers_Players = new ArrayList<Player>();
-        Bortland_Trail_Plazers_Players.add(new Player("Lamien Dillard", 89, 27));
-        Bortland_Trail_Plazers_Players.add(new Player("MJ CcCollum", 85, 26));
-        Bortland_Trail_Plazers_Players.add(new Player("Al-farouq Aminu", 74, 27));
-        Bortland_Trail_Plazers_Players.add(new Player("Nusuf Jurkic", 78, 23));
-        Bortland_Trail_Plazers_Players.add(new Player("Cat Ponnaughton", 75, 24));
-        Team Bortland_Trail_Plazers = new Team(Bortland_Trail_Plazers_Players, "Bortland Trail Plazers");
-        allTeams.add(Bortland_Trail_Plazers);
-        ArrayList<Player> Kacramento_Sings_Players = new ArrayList<Player>();
-        Kacramento_Sings_Players.add(new Player("Rach Zandolph", 81, 36));
-        Kacramento_Sings_Players.add(new Player("Huddy Bield", 79, 24));
-        Kacramento_Sings_Players.add(new Player("Cillie Wauley-Stein", 77, 24));
-        Kacramento_Sings_Players.add(new Player("Heorge Gill", 77, 31));
-        Kacramento_Sings_Players.add(new Player("Bogdan Bogdanovic", 76, 25));
-        Team Kacramento_Sings = new Team(Kacramento_Sings_Players, "Kacramento Sings");
-        allTeams.add(Kacramento_Sings);
-        ArrayList<Player> San_Antonio_Spurs_Players = new ArrayList<Player>();
-        San_Antonio_Spurs_Players.add(new Player("Lawhi Keonard", 95, 26));
-        San_Antonio_Spurs_Players.add(new Player("Aamarcus Lldrige", 88, 32));
-        San_Antonio_Spurs_Players.add(new Player("Gau Pasol", 81, 37));
-        San_Antonio_Spurs_Players.add(new Player("Guday Ray", 81, 31));
-        San_Antonio_Spurs_Players.add(new Player("Pony Tarker", 78, 35));
-        Team San_Antonio_Spurs = new Team(San_Antonio_Spurs_Players, "San Antonio Spurs");
-        allTeams.add(San_Antonio_Spurs);
-        ArrayList<Player> Roronto_Taptors_Players = new ArrayList<Player>();
-        Roronto_Taptors_Players.add(new Player("Demar Derozan", 89, 28));
-        Roronto_Taptors_Players.add(new Player("Lyle Kowry", 86, 31));
-        Roronto_Taptors_Players.add(new Player("Vonas Jalanciunas", 80, 25));
-        Roronto_Taptors_Players.add(new Player("Ierge Sbaka", 79, 25));
-        Roronto_Taptors_Players.add(new Player("Pakob Joeltl", 76, 22));
-        Team Roronto_Taptors = new Team(Roronto_Taptors_Players, "Roronto Taptors");
-        allTeams.add(Roronto_Taptors);
-        ArrayList<Player> Jtah_Uazz_Players = new ArrayList<Player>();
-        Jtah_Uazz_Players.add(new Player("Gudy Robert", 87, 25));
-        Jtah_Uazz_Players.add(new Player("Monovan Ditchell", 82, 21));
-        Jtah_Uazz_Players.add(new Player("Ferrick Davors", 81, 26));
-        Jtah_Uazz_Players.add(new Player("Hodney Rood", 80, 25));
-        Jtah_Uazz_Players.add(new Player("Rickey Rubio", 78, 27));
-        Team Jtah_Uazz = new Team(Jtah_Uazz_Players, "Jtah Uazz");
-        allTeams.add(Jtah_Uazz);
-        ArrayList<Player> Washington_Wizards_Players = new ArrayList<Player>();
-        Washington_Wizards_Players.add(new Player("Wohn Joll", 89, 27));
-        Washington_Wizards_Players.add(new Player("Bradley Beal", 86, 24));
-        Washington_Wizards_Players.add(new Player("Ptto Ootter", 82, 24));
-        Washington_Wizards_Players.add(new Player("Garcin Mortat", 79, 33));
-        Washington_Wizards_Players.add(new Player("Sike Mcott", 78, 29));
-        Team Washington_Wizards = new Team(Washington_Wizards_Players, "Washington Wizards");
-        allTeams.add(Washington_Wizards);
 
         // Configure Spark
         port(4567);
@@ -538,39 +78,64 @@ public class Application implements spark.servlet.SparkApplication{
         staticFiles.expireTime(600L);
         enableDebugScreen();
 
-
-
         // Set up before-filters (called before each get/post)
         before("*",                  Filters.addTrailingSlashes);
         before("*",                  Filters.handleLocaleChange);
+
+
+
+
 //
         get(Path.Web.SELECTION,       (req, res) -> {
-            return ViewController.serveSelectionPage(req, res, allTeams);
+            System.out.println("caleld");
+            Session oldSession = req.session(false);
+            if (oldSession!=null && !oldSession.isNew()) {
+                oldSession.invalidate();
+            }
+            Session session = req.session(true); // create the session
+            return ViewController.serveSelectionPage(req, res, TeamHelper.getTeamArrayList());
         });
 
         post(Path.Web.SELECTION,       (req, res) -> {
+            userData.remove(req.cookie("JSESSIONID"));
+            userData.put(req.cookie("JSESSIONID"), new UserData());
             String myTeamName = req.queryParams("teamSelection");
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
+            ArrayList<Team> allTeams = currentUserData.getAllTeams();
             for (int i = 0; i < allTeams.size(); i++) {
                 if(myTeamName.equals(allTeams.get(i).getName())) {
-                    myTeam = allTeams.get(i);
+                    currentUserData.setUserTeam(allTeams.get(i));
                 }
             }
-            managerName = req.queryParams("managerName");
+            currentUserData.setManagerName(req.queryParams("managerName"));
             res.redirect(Path.Web.ROSTER);
             return null;
         });
+
         get(Path.Web.ROSTER,       (req, res) -> {
-            return ViewController.serveRoster(req, res, myTeam, managerName);
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
+            System.out.println(req.cookie("JSESSIONID"));
+            System.out.println(currentUserData.getManagerName());
+            return ViewController.serveRoster(req, res, currentUserData.getUserTeam(), currentUserData.getManagerName());
         });
 
         post(Path.Web.ROSTER,       (req, res) -> {
+            String[] results = req.queryParamsValues("playerSelection");
+            for (int i = 0; i < results.length; i++) {
+                System.out.println(results[i]);
+            }
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             res.redirect(Path.Web.GAMEPLAY);
             return null;
         });
         get(Path.Web.GAMEPLAY,       (req, res) -> {
-            return ViewController.serveGamePlay(req, res, allTeams);
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
+            System.out.println(req.cookie("JSESSIONID"));
+            System.out.println(currentUserData.getManagerName());
+            return ViewController.serveGamePlay(req, res, currentUserData);
         });
-        redirect.get("*", Path.Web.HOME);
+
+//        redirect.get("*", Path.Web.SELECTION);
 
 //        get("*",                     ViewUtil.notFound);
 

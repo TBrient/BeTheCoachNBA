@@ -33,8 +33,6 @@ public class ViewController {
     };
     public static String serveRoster(Request request, Response response, Team team, String manager){
         Map<String,Object> model = new HashMap<>();
-        ArrayList<Player> roster = new ArrayList<>();
-        roster = team.getTeam();
 
         model.put("managerName", manager);
         model.put("team", team);
@@ -42,13 +40,15 @@ public class ViewController {
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }
 
-    public static String serveGamePlay(Request request, Response response, ArrayList<Team> teams){
+    public static String serveGamePlay(Request request, Response response, UserData userData){
         Map<String,Object> model = new HashMap<>();
-        ArrayList<Player> roster = new ArrayList<>();
 
-        ArrayList<Team> scoredTeams = teams.get(0).simMonth(teams);
+        ArrayList<Team> scoredTeams = userData.getAllTeams().get(0).simMonth(userData.getAllTeams());
+        userData.setAllTeams(scoredTeams);
 
-        model.put("teams", scoredTeams);
+        System.out.println(userData.getManagerName());
+
+        model.put("teams", userData.getAllTeams());
 
         return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
