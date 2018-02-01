@@ -57,23 +57,23 @@ public class Team {
             }
         }
         for (int i = teams.size() / 2; i < teams.size(); i++) {
-            teams.get(i).setLoss(teams.get(i - teams.size() / 2).getLoss());
-            teams.get(i).setWin(teams.get(i - teams.size() / 2).getWin());
+            teams.get(i).setLoss(teams.get(i - teams.size() / 2).getWin());
+            teams.get(i).setWin(teams.get(i - teams.size() / 2).getLoss());
         }
         for (int i = 0; i < teams.size() - 1; i++) {
             int mutate = (int) (Math.random() * 100);
-            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
+            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2 && teams.get(i+1).getWin() > 2 && teams.get(i+1).getLoss() > 2) {
                 if (mutate > 25 && mutate < 50) {
                     teams.get(i).setLoss(teams.get(i).getLoss() - 2);
                     teams.get(i).setWin(teams.get(i).getWin() + 2);
-                    teams.get(i + 1).setLoss(teams.get(i).getLoss() + 2);
-                    teams.get(i + 1).setWin(teams.get(i).getWin() - 2);
+                    teams.get(i + 1).setLoss(teams.get(i+1).getLoss() + 2);
+                    teams.get(i + 1).setWin(teams.get(i+1).getWin() - 2);
                 }
                 if (mutate > 0 && mutate < 25) {
                     teams.get(i).setLoss(teams.get(i).getLoss() + 2);
                     teams.get(i).setWin(teams.get(i).getWin() - 2);
-                    teams.get(i + 1).setLoss(teams.get(i).getLoss() - 2);
-                    teams.get(i + 1).setWin(teams.get(i).getWin() + 2);
+                    teams.get(i + 1).setLoss(teams.get(i+1).getLoss() - 2);
+                    teams.get(i + 1).setWin(teams.get(i+1).getWin() + 2);
                 }
             }
         }
