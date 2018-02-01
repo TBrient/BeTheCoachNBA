@@ -271,6 +271,16 @@ public class TeamHelper {
         Replacements.add(new Player("Ben Dover",73,20));
         Replacements.add(new Player("Mike Hunt",72,18));
         Replacements.add(new Player("Primo Baldo",76,16));
+        Replacements.add(new Player("Oliver Moody",82,18));
+        Replacements.add(new Player("Tyler Brient",79,21));
+        Replacements.add(new Player("Xavier Dunkerton",78,18));
+        Replacements.add(new Player("McLovin",83,25));
+        Replacements.add(new Player("DeAndre Arden",72,20));
+        Replacements.add(new Player("Chris Young",76,19));
+        Replacements.add(new Player("Kevin Long",71,18));
+        Replacements.add(new Player("Sam Jones",74,21));
+        Replacements.add(new Player("Andrew Paxton",77,19));
+        Replacements.add(new Player("Terrance Thomas",78,20));
 
 
 
