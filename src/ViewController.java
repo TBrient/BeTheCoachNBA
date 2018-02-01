@@ -34,8 +34,19 @@ public class ViewController {
     public static String serveRoster(Request request, Response response, Team team, String manager){
         Map<String,Object> model = new HashMap<>();
 
+        ArrayList<Player> replacements = TeamHelper.getReplacements();
+
+        ArrayList<Player> replacementsRandom = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            int rand = (int)(Math.random()*replacements.size());
+            replacementsRandom.add(replacements.get(rand));
+            replacements.remove(rand);
+        }
+
         model.put("managerName", manager);
         model.put("team", team);
+        model.put("replacements", replacementsRandom);
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }

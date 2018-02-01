@@ -1,6 +1,9 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.ArrayList;
 
 public class TeamHelper {
+
     public static ArrayList<Team> getTeamArrayList() {
         ArrayList<Team> allTeams = new ArrayList<Team>();
 
@@ -271,6 +274,6 @@ public class TeamHelper {
 
 
 
-        return getReplacements();
+        return Replacements;
     }
 }

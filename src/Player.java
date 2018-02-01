@@ -19,6 +19,18 @@ public class Player {
         this.name = name;
     }
 
+    public int updateRating() {
+        if (18<=age&&age<28){
+            this.setRating(getRating() +2);
+            this.setAge(age+1);
+        }
+        if(age>=28){
+            this.setRating(getRating() - 2);
+            this.setAge(age+1);
+        }
+        return rating;
+    }
+
     public int getRating() {
         return rating;
     }

@@ -120,14 +120,15 @@ public class Application implements spark.servlet.SparkApplication{
         });
 
         post(Path.Web.ROSTER,       (req, res) -> {
-            String[] results = req.queryParamsValues("playerSelection");
-            for (int i = 0; i < results.length; i++) {
-                System.out.println(results[i]);
+            String[] selectedPlayers = req.queryParamsValues("playerSelection");
+            for (int i = 0; i < selectedPlayers.length; i++) {
+                System.out.println(selectedPlayers[i]);
             }
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             res.redirect(Path.Web.GAMEPLAY);
             return null;
         });
+
         get(Path.Web.GAMEPLAY,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             System.out.println(req.cookie("JSESSIONID"));
