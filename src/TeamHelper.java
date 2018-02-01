@@ -263,10 +263,11 @@ public class TeamHelper {
         Replacements.add(new Player("Pip Len",80,20));
         Replacements.add(new Player("Dederick Lionel",70,18));
         Replacements.add(new Player("Deforest Herman",71,19));
-        Replacements.add(new Player("Fitz Yakub",75,19));
-        Replacements.add(new Player("Fitz Yakub",75,19));
-        Replacements.add(new Player("Fitz Yakub",75,19));
-        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Janis Markuss",81,17));
+        Replacements.add(new Player("Mike Hawk",75,22));
+        Replacements.add(new Player("Ben Dover",73,20));
+        Replacements.add(new Player("Mike Hunt",72,18));
+        Replacements.add(new Player("Primo Baldo",76,16));
 
 
 
