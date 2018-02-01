@@ -57,8 +57,8 @@ public class Team {
             }
         }
         for (int i = teams.size()-1; i >= teams.size()/2; i--) {
-            teams.get(i).setLoss(teams.get(i - (teams.size() / 2)).getWin());
-            teams.get(i).setWin(teams.get(i - (teams.size() / 2)).getLoss());
+            teams.get(i).setLoss(teams.get(i - (teams.size()-1-i)).getWin());
+            teams.get(i).setWin(teams.get(i - (teams.size()-1-i)).getLoss());
         }
         for (int i = 0; i < teams.size() - 1; i++) {
             int mutate = (int) (Math.random() * 100);
