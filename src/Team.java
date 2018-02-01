@@ -56,7 +56,7 @@ public class Team {
                 teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
             }
         }
-        for (int i = teams.size(); i >= teams.size()/2; i--) {
+        for (int i = teams.size()-1; i >= teams.size()/2; i--) {
             teams.get(i).setLoss(teams.get(i - (teams.size() / 2)).getWin());
             teams.get(i).setWin(teams.get(i - (teams.size() / 2)).getLoss());
         }
