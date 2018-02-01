@@ -281,6 +281,10 @@ public class TeamHelper {
         Replacements.add(new Player("Sam Jones",74,21));
         Replacements.add(new Player("Andrew Paxton",77,19));
         Replacements.add(new Player("Terrance Thomas",78,20));
+        Replacements.add(new Player("Haydn Davies",80,17));
+        Replacements.add(new Player("Jermey Kunen",79,17));
+
+
 
 
 
