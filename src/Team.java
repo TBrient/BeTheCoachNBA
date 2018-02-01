@@ -47,16 +47,16 @@ public class Team {
         for (int i = 0; i < teams.size() / 2; i++) {
             if (i < 5) {
                 teams.get(i).setLoss((int) (Math.random() * 5 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12  - teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
             } else if (i < 10) {
                 teams.get(i).setLoss((int) (Math.random() * 7 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12  - teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
             } else if (i < teams.size() / 2) {
                 teams.get(i).setLoss((int) (Math.random() * 9 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12  - teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
             }
         }
-        for (int i = teams.size() / 2; i < teams.size(); i++) {
+        for (int i = teams.size(); i >= teams.size()/2; i--) {
             teams.get(i).setLoss(teams.get(i - (teams.size() / 2)).getWin());
             teams.get(i).setWin(teams.get(i - (teams.size() / 2)).getLoss());
         }
