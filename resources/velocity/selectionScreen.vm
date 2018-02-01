@@ -31,6 +31,7 @@
 <input type="hidden" name="roster" value="8">
 <p>
 <center>
+<input type="text" name="managerName" placeholder="Enter Manager Name"><br>
 <input type="hidden" name="pickTeam" value="Select a Team">
 <input type="submit" name="btn1" value="Pick A Team">
 </center>

@@ -31,22 +31,26 @@ public class ViewController {
 
         return ViewUtil.render(request, model, Path.Template.SELECTION);
     };
-    public static String serveRoster(Request request, Response response, Team team){
+    public static String serveRoster(Request request, Response response, Team team, String manager){
         Map<String,Object> model = new HashMap<>();
-        ArrayList<Player> roster = new ArrayList<>();
-        roster = team.getTeam();
 
+        model.put("managerName", manager);
         model.put("team", team);
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }
-    public static String serveGamePlay(Request request, Response response, ArrayList<Team>teams){
+
+    public static String serveGamePlay(Request request, Response response, UserData userData){
         Map<String,Object> model = new HashMap<>();
-        ArrayList<Player> roster = new ArrayList<>();
 
-        model.put("team", teams);
+        ArrayList<Team> scoredTeams = userData.getAllTeams().get(0).simMonth(userData.getAllTeams());
+        userData.setAllTeams(scoredTeams);
 
-        return ViewUtil.render(request, model, Path.Template.ROSTER);
+        System.out.println(userData.getManagerName());
+
+        model.put("teams", userData.getAllTeams());
+
+        return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
 
     public static String serveOtherPages(Request request, Response response, String displayString) {

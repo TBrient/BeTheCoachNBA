@@ -40,21 +40,29 @@ public class Team {
             @Override
             public int compare(Team o1, Team o2) {
                 //check if right order
-                return o2.getRating() - o1.getRating();
+                return o2.rating - o1.rating;
             }
         });
 
         for (int i = 0; i < teams.size() / 2; i++) {
-            teams.get(i).setLoss((int) (Math.random() * 9 - 1) + teams.get(i).getLoss());
-            teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
+            if (i < 5) {
+                teams.get(i).setLoss((int) (Math.random() * 5 - 1) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
+            } else if (i < 10) {
+                teams.get(i).setLoss((int) (Math.random() * 7 - 1) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
+            } else if (i < teams.size() / 2) {
+                teams.get(i).setLoss((int) (Math.random() * 9 - 1) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 + teams.get(i).getWin() - teams.get(i).getLoss());
+            }
         }
         for (int i = teams.size() / 2; i < teams.size(); i++) {
             teams.get(i).setLoss(teams.get(i - teams.size() / 2).getLoss());
             teams.get(i).setWin(teams.get(i - teams.size() / 2).getWin());
         }
-        for (int i = 0; i < teams.size()-1; i++) {
+        for (int i = 0; i < teams.size() - 1; i++) {
             int mutate = (int) (Math.random() * 100);
-            if(teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
+            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2) {
                 if (mutate > 25 && mutate < 50) {
                     teams.get(i).setLoss(teams.get(i).getLoss() - 2);
                     teams.get(i).setWin(teams.get(i).getWin() + 2);
@@ -105,7 +113,7 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             rating += team.get(i).getRating();
         }
-        rating = rating/5;
+        rating = rating / 5;
         return rating;
     }
 

@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 
-/**
- * Created by student on 12/19/17.
- */
-public class Main {
-    public static void main(String[] args) {
+public class TeamHelper {
+    public static ArrayList<Team> getTeamArrayList() {
         ArrayList<Team> allTeams = new ArrayList<Team>();
+
         ArrayList<Player> Htlanta_Aawks_Players = new ArrayList<Player>();
         Htlanta_Aawks_Players.add(new Player("Sennis Dchroder", 82, 24));
         Htlanta_Aawks_Players.add(new Player("Barco Melinelli", 77, 31));
@@ -249,5 +247,29 @@ public class Main {
 
 
 
+        return allTeams;
+    }
+    public static ArrayList<Player> getReplacements(){
+        ArrayList<Player> Replacements = new ArrayList<Player>();
+        Replacements.add(new Player("Holden Mugroin",78,19));
+        Replacements.add(new Player("Kan Ming Xu",69,17));
+        Replacements.add(new Player("Hugh Ganus",72,18));
+        Replacements.add(new Player("Jengo Chifuniro",74,21));
+        Replacements.add(new Player("Mwanajuma Gugulethu",73,20));
+        Replacements.add(new Player("Poseidon Poncio",79,22));
+        Replacements.add(new Player("Wilma Dikphit",77,18));
+        Replacements.add(new Player("Barry McKockinner",76,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Pip Len",80,20));
+        Replacements.add(new Player("Dederick Lionel",70,18));
+        Replacements.add(new Player("Deforest Herman",71,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+        Replacements.add(new Player("Fitz Yakub",75,19));
+
+
+
+        return getReplacements();
     }
 }
