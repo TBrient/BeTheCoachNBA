@@ -67,7 +67,7 @@ public class Team {
                     teams.get(i).setLoss(teams.get(i).getLoss() - 2);
                     teams.get(i).setWin(teams.get(i).getWin() + 2);
                     teams.get(i + 1).setLoss(teams.get(i+1).getLoss() + 2);
-                    teams.get(i + 1).setWin(teams.get(i).getWin() - 2);
+                    teams.get(i + 1).setWin(teams.get(i+1).getWin() - 2);
                 }
                 if (mutate > 0 && mutate < 25) {
                     teams.get(i).setLoss(teams.get(i).getLoss() + 2);
