@@ -25,6 +25,14 @@
     <td><input type="checkbox" name="playerSelection" value="$player.getName()"></td>
   </tr>
 #end
+#foreach($player in $replacements)
+  <tr>
+    <td>$player.getName()</td>
+    <td>$player.getRating()</td>
+    <td>$player.getAge()</td>
+    <td><input type="checkbox" name="playerSelection" value="$player.getName()"></td>
+  </tr>
+#end
 </table>
 
 

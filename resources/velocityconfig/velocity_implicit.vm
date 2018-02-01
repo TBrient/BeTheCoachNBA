@@ -7,3 +7,4 @@
 #* @vtlvariable name="player" type="Player" *#
 #* @vtlvariable name="index" type="java.lang.Integer" *#
 #* @vtlvariable name="managerName" type="java.lang.String" *#
+#* @vtlvariable name="replacements" type="java.util.ArrayList" *#
