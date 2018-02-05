@@ -60,6 +60,7 @@ public class ViewController {
         System.out.println(userData.getManagerName());
 
         model.put("teams", userData.getAllTeams());
+        model.put("myTeamName", userData.getUserTeam().getName());
 
         return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
