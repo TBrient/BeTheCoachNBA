@@ -288,7 +288,11 @@ public class TeamHelper {
         Replacements.add(new Player("Andrew Paxton",77,19));
         Replacements.add(new Player("Terrance Thomas",78,20));
         Replacements.add(new Player("Haydn Davies",80,17));
-        Replacements.add(new Player("Jermey Kunen",79,17));
+        Replacements.add(new Player("Jeremy Kunen",79,17));
+        Replacements.add(new Player("Cox Ucker",74,19));
+        Replacements.add(new Player("Craven Moorehead",73,18));
+        Replacements.add(new Player("Dang Lin Wang",81,21));
+
 
 
 
