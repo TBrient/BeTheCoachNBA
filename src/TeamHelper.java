@@ -262,6 +262,7 @@ public class TeamHelper {
         Replacements.add(new Player("Poseidon Poncio",79,22));
         Replacements.add(new Player("Wilma Dikphit",77,18));
         Replacements.add(new Player("Barry McKockinner",76,19));
+        Replacements.add(new Player("Duncan McKockinner",80,21));
         Replacements.add(new Player("Fitz Yakub",75,19));
         Replacements.add(new Player("Pip Len",80,20));
         Replacements.add(new Player("Dederick Lionel",70,18));
@@ -289,9 +290,7 @@ public class TeamHelper {
         Replacements.add(new Player("Terrance Thomas",78,20));
         Replacements.add(new Player("Haydn Davies",80,17));
         Replacements.add(new Player("Jermey Kunen",79,17));
-
-
-
+        Replacements.add(new Player("Oliver Klozoff",64,18));
 
 
         return Replacements;
