@@ -299,6 +299,7 @@ public class TeamHelper {
 
         Replacements.add(new Player("Jermey Kunen",79,17));
         Replacements.add(new Player("Oliver Klozoff",64,18));
+        Replacements.add(new Player("Eric Tyledisfuncton",78,23));
 
 
         return Replacements;

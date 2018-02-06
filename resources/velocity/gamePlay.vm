@@ -17,12 +17,22 @@
 <!--IMPORTANT-->
 #set($index = 1)
 #foreach($team in $teams)
-  <tr>
-    <td>$index</td>
-    <td>$team.getName()</td>
-    <td>$team.getWin()</td>
-    <td>$team.getLoss()</td>
-  </tr>
+  #if ($team.getName().equals($myTeamName))
+    <tr>
+      <td><b>$index</b></td>
+      <td><b>$team.getName()</b></td>
+      <td><b>$team.getWin()</b></td>
+      <td><b>$team.getLoss()</b></td>
+    </tr>
+  #else
+    <tr>
+      <td>$index</td>
+      <td>$team.getName()</td>
+      <td>$team.getWin()</td>
+      <td>$team.getLoss()</td>
+    </tr>
+  #end
+
   #set($index = $index + 1)
 #end
 

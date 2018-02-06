@@ -60,6 +60,7 @@ public class ViewController {
         System.out.println(userData.getManagerName());
 
         model.put("teams", userData.getAllTeams());
+        model.put("myTeamName", userData.getUserTeam().getName());
 
         return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
@@ -71,5 +72,13 @@ public class ViewController {
         model.put("displayText", displayString);
 
         return ViewUtil.render(request, model, Path.Template.HOME);
+    };
+
+    public static String serveBracketPage(Request request, Response response) {
+
+        Map<String, Object> model = new HashMap<>();
+
+
+        return ViewUtil.render(request, model, Path.Template.BRACKET);
     };
 }
