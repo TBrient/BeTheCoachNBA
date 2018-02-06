@@ -83,7 +83,10 @@ public class Application implements spark.servlet.SparkApplication{
         before("*",                  Filters.handleLocaleChange);
 
 
+        get(Path.Web.BRACKET,       (req, res) -> {
 
+            return ViewController.serveBracketPage(req, res);
+        });
 
 //
         get(Path.Web.SELECTION,       (req, res) -> {
