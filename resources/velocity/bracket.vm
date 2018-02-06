@@ -14,69 +14,48 @@
 <tr>
 <td valign="top">
 <table summary="Tournament Bracket">
- <tr>
-  <td><p>1. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
-  <td rowspan="4"><p>team name</p></td>
-  <td rowspan="8"><p>team name</p></td>
-  <td rowspan="16"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>16. team name</p></td>
- </tr>
- <tr>
-  <td><p>8. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>9. team name</p></td>
- </tr>
- <tr>
-  <td><p>5. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
-  <td rowspan="4"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>12. team name</p></td>
- </tr>
- <tr>
-  <td><p>4. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>13. team name</p></td>
- </tr>
- <tr>
-  <td><p>6. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
-  <td rowspan="4"><p>team name</p></td>
-  <td rowspan="8"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>11. team name</p></td>
- </tr>
- <tr>
-  <td><p>3. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>14. team name</p></td>
- </tr>
- <tr>
-  <td><p>7. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
-  <td rowspan="4"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>10. team name</p></td>
- </tr>
- <tr>
-  <td><p>2. team name</p></td>
-  <td rowspan="2"><p>team name</p></td>
- </tr>
- <tr>
-  <td><p>15. team name</p></td>
- </tr>
+    <tr>
+    <td>
+	<ul class="round round-3">
+		<li class="spacer">&nbsp;</li>
+
+		<li class="game game-top winner">Lousville <span>77</span></li>
+		<li class="game game-spacer">&nbsp;</li>
+		<li class="game game-bottom ">Oregon <span>69</span></li>
+
+		<li class="spacer">&nbsp;</li>
+
+		<li class="game game-top ">Mich St <span>61</span></li>
+		<li class="game game-spacer">&nbsp;</li>
+		<li class="game game-bottom winner">Duke <span>71</span></li>
+
+		<li class="spacer">&nbsp;</li>
+	</ul>
+	</td>
+
+	<td>
+	<ul class="round round-4">
+		<li class="spacer">&nbsp;</li>
+
+		<li class="game game-top winner">Lousville <span>85</span></li>
+		<li class="game game-spacer">&nbsp;</li>
+		<li class="game game-bottom ">Duke <span>63</span></li>
+
+		<li class="spacer">&nbsp;</li>
+	</ul>
+	</td>
+
+	<td>
+	<ul class="round round-4">
+		<li class="spacer">&nbsp;</li>
+
+		<li class="game game-top winner">Lousville <span>World Champions</span></li>
+
+		<li class="spacer">&nbsp;</li>
+	</ul>
+	</td>
+
+	<tr>
 </table>
 
 </table>
