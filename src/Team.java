@@ -101,8 +101,8 @@ public class Team {
         score = score/5;
         score1 += team1.getRating();
         Random j = new Random();
-        double rand = j.nextGaussian() * 20;
-        double rand1 = j.nextGaussian() * 20;
+        double rand = j.nextGaussian() * 15;
+        double rand1 = j.nextGaussian() * 15;
         score += (int) (rand);
         score1 += (int) (rand1);
         if (rand > rand1) {
