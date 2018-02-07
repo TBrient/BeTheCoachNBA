@@ -7,6 +7,7 @@ import util.ViewUtil;
 import javax.swing.text.View;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,10 +84,7 @@ public class Application implements spark.servlet.SparkApplication{
         before("*",                  Filters.handleLocaleChange);
 
 
-        get(Path.Web.BRACKET,       (req, res) -> {
 
-            return ViewController.serveBracketPage(req, res);
-        });
 
 //
         get(Path.Web.SELECTION,       (req, res) -> {
@@ -137,6 +135,22 @@ public class Application implements spark.servlet.SparkApplication{
             System.out.println(req.cookie("JSESSIONID"));
             System.out.println(currentUserData.getManagerName());
             return ViewController.serveGamePlay(req, res, currentUserData);
+        });
+
+        get(Path.Web.BRACKET,       (req, res) -> {
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
+//            System.out.println(req.cookie("JSESSIONID"));
+//            System.out.println(currentUserData.getManagerName());
+            return ViewController.serveBracketPage(req,res, TeamHelper.getTeamArrayList());
+        });
+        post(Path.Web.BRACKET,       (req, res) -> {
+            UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
+            ArrayList<Team> team = TeamHelper.getTeamArrayList();
+            ArrayList<Integer> gameScore = team.get(0).gameScore(team.get(3));
+            ArrayList<Integer> gameScore2 = team.get(1).gameScore(team.get(2));
+
+            return ViewController.serveBracketPage(req,res, TeamHelper.getTeamArrayList(), gameScore, gameScore2);
+
         });
 
 //        redirect.get("*", Path.Web.SELECTION);

@@ -91,10 +91,10 @@ public class Team {
         return teams;
     }
 
-    public String gameScore(Team team1) {
+    public ArrayList<Integer> gameScore(Team team1) {
         int score = 0;
         int score1 = 0;
-        String answer;
+        ArrayList<Integer> answer = new ArrayList<Integer>();
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
             score1 += team1.getTeam().get(i).getRating();
@@ -104,11 +104,8 @@ public class Team {
         double rand1 = j.nextGaussian() * 20;
         score += (int) (rand);
         score1 += (int) (rand1);
-        if (rand > rand1) {
-            answer = this.getName() + "defeats " + team1.getName() + score + "to " + score1;
-        } else {
-            answer = team1.getName() + "defeats " + this.getName() + score1 + "to " + score;
-        }
+        answer.add(score/4);
+        answer.add(score1/4);
         return answer;
     }
 

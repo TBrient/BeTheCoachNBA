@@ -9,3 +9,6 @@
 #* @vtlvariable name="managerName" type="java.lang.String" *#
 #* @vtlvariable name="myTeamName" type="java.lang.String" *#
 #* @vtlvariable name="replacements" type="java.util.ArrayList" *#
+#* @vtlvariable name="game1Score" type="java.util.ArrayList" *#
+#* @vtlvariable name="game2Score" type="java.util.ArrayList" *#
+

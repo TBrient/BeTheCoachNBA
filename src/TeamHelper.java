@@ -255,7 +255,7 @@ public class TeamHelper {
     public static ArrayList<Player> getReplacements(){
         ArrayList<Player> Replacements = new ArrayList<Player>();
         Replacements.add(new Player("Holden Mugroin",78,19));
-        Replacements.add(new Player("Kan Ming Xu",69,17));
+        Replacements.add(new Player("Kan Ming Shoe",69,17));
         Replacements.add(new Player("Hugh Ganus",72,18));
         Replacements.add(new Player("Jengo Chifuniro",74,21));
         Replacements.add(new Player("Mwanajuma Gugulethu",73,20));
@@ -299,6 +299,9 @@ public class TeamHelper {
 
         Replacements.add(new Player("Jermey Kunen",79,17));
         Replacements.add(new Player("Oliver Klozoff",64,18));
+        Replacements.add(new Player("Brad Chad",76,22));
+
+
         Replacements.add(new Player("Eric Tyledisfuncton",78,23));
 
 

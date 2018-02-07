@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+
 /**
  * Created by student on 12/19/17.
  */
@@ -15,6 +16,7 @@ public class ViewController {
     public static String serveSelectionPage(Request request, Response response, ArrayList<Team> teams) {
 
         Map<String, Object> model = new HashMap<>();
+
 
         ArrayList<ArrayList<Team>> TeamSplit = new ArrayList<ArrayList<Team>>();
 
@@ -74,9 +76,27 @@ public class ViewController {
         return ViewUtil.render(request, model, Path.Template.HOME);
     };
 
-    public static String serveBracketPage(Request request, Response response) {
+    public static String serveBracketPage(Request request, Response response, ArrayList<Team> teams) {
 
         Map<String, Object> model = new HashMap<>();
+        model.put("teams", teams);
+        ArrayList<Integer> fakeScore = new ArrayList<Integer>();
+        fakeScore.add(null);
+        fakeScore.add(null);
+        model.put("game1Score", fakeScore);
+        model.put("game2Score", fakeScore);
+
+
+        return ViewUtil.render(request, model, Path.Template.BRACKET);
+    };
+
+    public static String serveBracketPage(Request request, Response response, ArrayList<Team> teams, ArrayList<Integer> game1Score, ArrayList<Integer> game2Score) {
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("teams", teams);
+        model.put("game1Score", game1Score);
+        model.put("game2Score", game2Score);
+
 
 
         return ViewUtil.render(request, model, Path.Template.BRACKET);
