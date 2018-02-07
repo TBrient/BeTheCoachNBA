@@ -41,7 +41,7 @@ public class Team {
             @Override
             public int compare(Team o1, Team o2) {
                 //check if right order
-                return o2.rating - o1.rating;
+                return o2.getRating() - o1.getRating();
             }
         });
 
@@ -97,11 +97,12 @@ public class Team {
         ArrayList<Integer> answer = new ArrayList<Integer>();
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
-            score1 += team1.getTeam().get(i).getRating();
         }
+        score = score/5;
+        score1 += team1.getRating();
         Random j = new Random();
-        double rand = j.nextGaussian() * 20;
-        double rand1 = j.nextGaussian() * 20;
+        double rand = j.nextGaussian() * 15;
+        double rand1 = j.nextGaussian() * 15;
         score += (int) (rand);
         score1 += (int) (rand1);
         answer.add(score/4);
