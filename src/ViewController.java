@@ -33,22 +33,33 @@ public class ViewController {
 
         return ViewUtil.render(request, model, Path.Template.SELECTION);
     };
-    public static String serveRoster(Request request, Response response, Team team, String manager){
+    //public static Boolean pickFive = false;
+    public static String serveRoster(Request request, Response response, UserData userData){
         Map<String,Object> model = new HashMap<>();
 
-        ArrayList<Player> replacements = TeamHelper.getReplacements();
 
-        ArrayList<Player> replacementsRandom = new ArrayList<>();
+        ArrayList<Player> replacements = userData.getUserReplacements();
 
-        for (int i = 0; i < 5; i++) {
-            int rand = (int)(Math.random()*replacements.size());
-            replacementsRandom.add(replacements.get(rand));
-            replacements.remove(rand);
-        }
+       ArrayList<Player> replacementsRandom = new ArrayList<>();
+        //if (pickFive) {
+        if (userData.getRandomReplace().size() == 0) {
 
-        model.put("managerName", manager);
-        model.put("team", team);
-        model.put("replacements", replacementsRandom);
+
+            for (int i = 0; i < 5; i++) {
+                int rand = (int) (Math.random() * replacements.size());
+                replacementsRandom.add(replacements.get(rand));
+                replacements.remove(rand);
+            }
+            userData.setRandomReplace(replacementsRandom);
+        }    //}
+
+
+
+
+        model.put("managerName", userData.getManagerName());
+        model.put("team", userData.getUserTeam());
+        model.put("replacements", userData.getRandomReplace());
+        model.put("pickFive", userData.getPickFive());
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }

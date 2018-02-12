@@ -55,7 +55,7 @@ public class Application implements spark.servlet.SparkApplication{
 
         get(Path.Web.ROSTER,       (req, res) -> {
             UserData currentUserData = userData.get("JSESSIONID");
-            return ViewController.serveRoster(req, res, currentUserData.getUserTeam(), currentUserData.getManagerName());
+            return ViewController.serveRoster(req, res, currentUserData);
         });
 
         get(Path.Web.GAMEPLAY,       (req, res) -> {
@@ -117,16 +117,35 @@ public class Application implements spark.servlet.SparkApplication{
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             System.out.println(req.cookie("JSESSIONID"));
             System.out.println(currentUserData.getManagerName());
-            return ViewController.serveRoster(req, res, currentUserData.getUserTeam(), currentUserData.getManagerName());
+            return ViewController.serveRoster(req, res, currentUserData);
         });
 
         post(Path.Web.ROSTER,       (req, res) -> {
-            String[] selectedPlayers = req.queryParamsValues("playerSelection");
-            for (int i = 0; i < selectedPlayers.length; i++) {
-                System.out.println(selectedPlayers[i]);
-            }
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            res.redirect(Path.Web.GAMEPLAY);
+            String[] results = req.queryParamsValues("playerSelection");
+            if(results.length == 5) {
+                ArrayList<Player> temp = new ArrayList<>();
+                for (int i = 0; i < results.length; i++) {
+                    for (int j = 0; j < currentUserData.getUserTeam().getTeam().size(); j++) {
+                        if (results[i].equals(currentUserData.getUserTeam().getTeam().get(j).getName())) {
+                            temp.add(currentUserData.getUserTeam().getTeam().get(j));
+                        }
+
+                    }
+                    for (int j = 0; j < TeamHelper.getReplacements().size(); j++) {
+                        if (results[i].equals(TeamHelper.getReplacements().get(j).getName())) {
+                            temp.add(TeamHelper.getReplacements().get(j));
+                        }
+                    }
+
+                }
+                currentUserData.getUserTeam().setTeam(temp);
+                res.redirect(Path.Web.GAMEPLAY);
+            }
+            else{
+                currentUserData.setPickFive(true);
+                res.redirect(Path.Web.ROSTER);
+            }
             return null;
         });
 
