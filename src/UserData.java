@@ -8,6 +8,7 @@ public class UserData {
     private ArrayList<Player> userReplacements = new ArrayList<>();
     private Boolean pickFive;
     private ArrayList <Player> randomReplace = new ArrayList<>();
+    private int[] record = new int[2]; //Wins,Losses
 
     public ArrayList<Player> getRandomReplace() {
         return randomReplace;
@@ -60,5 +61,11 @@ public class UserData {
 
     public void setManagerName(String managerName) {
         this.managerName = managerName;
+    }
+
+    public void endYear(){
+        record[0] = userTeam.getWin();
+        record[1] = userTeam.getLoss();
+
     }
 }

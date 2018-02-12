@@ -19,6 +19,7 @@ public class Player {
         this.name = name;
     }
 
+    //Adds a year to the players age and updates their rating
     public int updateRating() {
         if (18<=age&&age<28){
             this.setRating(getRating() +2);
