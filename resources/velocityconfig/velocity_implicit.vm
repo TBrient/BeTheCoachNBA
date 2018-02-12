@@ -11,4 +11,11 @@
 #* @vtlvariable name="replacements" type="java.util.ArrayList" *#
 #* @vtlvariable name="game1Score" type="java.util.ArrayList" *#
 #* @vtlvariable name="game2Score" type="java.util.ArrayList" *#
+#* @vtlvariable name="game3Score" type="java.util.ArrayList" *#
+#* @vtlvariable name="winner1" type="Team" *#
+#* @vtlvariable name="winner2" type="Team" *#
+#* @vtlvariable name="winner3" type="Team" *#
+
+
+
 
