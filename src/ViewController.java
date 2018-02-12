@@ -92,21 +92,35 @@ public class ViewController {
         Map<String, Object> model = new HashMap<>();
         model.put("teams", teams);
         ArrayList<Integer> fakeScore = new ArrayList<Integer>();
+        Team fakeTeam = new Team(new ArrayList<Player>(), null);
         fakeScore.add(null);
         fakeScore.add(null);
         model.put("game1Score", fakeScore);
         model.put("game2Score", fakeScore);
+        model.put("game3Score", fakeScore);
+        model.put("winner1", fakeTeam);
+        model.put("winner2", fakeTeam);
+        model.put("winner3", fakeTeam);
+
 
 
         return ViewUtil.render(request, model, Path.Template.BRACKET);
     };
 
-    public static String serveBracketPage(Request request, Response response, ArrayList<Team> teams, ArrayList<Integer> game1Score, ArrayList<Integer> game2Score) {
+    public static String serveBracketPage(Request request, Response response, ArrayList<Team> teams, ArrayList<Integer> game1Score, ArrayList<Integer> game2Score, ArrayList<Integer> game3Score, Team winner1, Team winner2, Team winner3) {
 
         Map<String, Object> model = new HashMap<>();
         model.put("teams", teams);
         model.put("game1Score", game1Score);
         model.put("game2Score", game2Score);
+        model.put("game3Score", game3Score);
+        model.put("winner1", winner1);
+        model.put("winner2", winner2);
+        model.put("winner3", winner3);
+
+
+
+
 
 
 

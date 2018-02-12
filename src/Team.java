@@ -100,15 +100,15 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
         }
-        score = score/5;
+        score = score/4;
         score1 += team1.getRating();
         Random j = new Random();
         double rand = j.nextGaussian() * 15;
         double rand1 = j.nextGaussian() * 15;
         score += (int) (rand);
         score1 += (int) (rand1);
-        answer.add(score/4);
-        answer.add(score1/4);
+        answer.add(score);
+        answer.add(score1);
         return answer;
     }
 

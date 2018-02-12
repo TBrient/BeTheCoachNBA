@@ -26,9 +26,9 @@
 
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top ">$teams.get(2).getName() <span>$!game2Score.get(0)</span></li>
+		<li class="game game-top ">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
 		<li class="game game-spacer">&nbsp;</li>
-		<li class="game game-bottom winner">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
+		<li class="game game-bottom winner">$teams.get(2).getName() <span>$!game2Score.get(1)</span></li>
 
 		<li class="spacer">&nbsp;</li>
 	</ul>
@@ -38,9 +38,9 @@
 	<ul class="round round-4">
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top winner">Lousville <span>85</span></li>
+		<li class="game game-top winner">$!winner1.getName()<span>$!game3Score.get(0)</span></li>
 		<li class="game game-spacer">&nbsp;</li>
-		<li class="game game-bottom ">Duke <span>63</span></li>
+		<li class="game game-bottom ">$!winner2.getName()<span>$!game3Score.get(1)</span></li>
 
 		<li class="spacer">&nbsp;</li>
 	</ul>
@@ -50,7 +50,7 @@
 	<ul class="round round-4">
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top winner">Lousville <span>World Champions</span></li>
+		<li class="game game-top winner">$!winner3.getName()<span>World Champions</span></li>
 
 		<li class="spacer">&nbsp;</li>
 	</ul>
