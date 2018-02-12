@@ -8,7 +8,7 @@
 </center>
 
 <br>
-<form action="index.cfm" method="POST">
+<form method="POST">
 
 
 <table>
@@ -43,14 +43,15 @@
 
 <p>
 
+    <center>
+     #if ($teams.get(0).getWin()+$teams.get(0).getLoss()<=83)
+        <input type="button" name="btn1" value="Run Month" onClick="window.location.reload()">
+     #else
+        <input type="submit" name="btn1" value="See Bracket">
+     #end
+    </center>
 </form>
 
-<center>
- #if ($teams.get(0).getWin()+$teams.get(0).getLoss()<=83)
-    <input type="submit" name="btn1" value="Run Month" onClick="window.location.reload()">
- #else
-    <input type="submit" name="btn1" value="See Bracket" onClick="window.location('/selection')">
- #end
 
 
 #end

@@ -19,16 +19,39 @@
 	<ul class="round round-3">
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top winner">$teams.get(0).getName()
-		 <span>$!game1Score.get(0)</span></li>
-		<li class="game game-spacer">&nbsp;</li>
-		<li class="game game-bottom ">$teams.get(3).getName() <span>$!game1Score.get(1)</span></li>
+        #if($!game1Score.get(0))
+            #if($!game1Score.get(0) > $!game1Score.get(1))
+                <li class="game game-top winner">$teams.get(0).getName()<span>$!game1Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom">$teams.get(3).getName() <span>$!game1Score.get(1)</span></li>
+            #elseif($!game1Score.get(0) < $!game1Score.get(1))
+                <li class="game game-top">$teams.get(0).getName()<span>$!game1Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom winer">$teams.get(3).getName() <span>$!game1Score.get(1)</span></li>
+            #end
+        #else
+            <li class="game game-top">$teams.get(0).getName()<span>$!game1Score.get(0)</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">$teams.get(3).getName() <span>$!game1Score.get(1)</span></li>
+        #end
 
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top ">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
-		<li class="game game-spacer">&nbsp;</li>
-		<li class="game game-bottom winner">$teams.get(2).getName() <span>$!game2Score.get(1)</span></li>
+        #if($!game2Score.get(0))
+            #if($!game2Score.get(0) > $!game2Score.get(1))
+                <li class="game game-top winner">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom">$teams.get(2).getName() <span>$!game2Score.get(1)</span></li>
+            #elseif($!game2Score.get(0) < $!game2Score.get(1))
+                <li class="game game-top">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom winner">$teams.get(2).getName() <span>$!game2Score.get(1)</span></li>
+            #end
+        #else
+            <li class="game game-top">$teams.get(1).getName() <span>$!game2Score.get(0)</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom">$teams.get(2).getName() <span>$!game2Score.get(1)</span></li>
+        #end
 
 		<li class="spacer">&nbsp;</li>
 	</ul>
