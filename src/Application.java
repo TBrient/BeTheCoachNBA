@@ -156,15 +156,18 @@ public class Application implements spark.servlet.SparkApplication{
             return ViewController.serveGamePlay(req, res, currentUserData);
         });
 
+        post(Path.Web.GAMEPLAY,       (req, res) -> {
+            res.redirect(Path.Web.BRACKET);
+            return null;
+        });
+
         get(Path.Web.BRACKET,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-//            System.out.println(req.cookie("JSESSIONID"));
-//            System.out.println(currentUserData.getManagerName());
-            return ViewController.serveBracketPage(req,res, TeamHelper.getTeamArrayList());
+            return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams());
         });
         post(Path.Web.BRACKET,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            ArrayList<Team> team = TeamHelper.getTeamArrayList();
+            ArrayList<Team> team = currentUserData.getAllTeams();
             ArrayList<Integer> gameScore = team.get(0).gameScore(team.get(3));
             ArrayList<Integer> gameScore2 = team.get(1).gameScore(team.get(2));
             Team winner1;
@@ -187,7 +190,7 @@ public class Application implements spark.servlet.SparkApplication{
                 winner3 = winner2;
 
 
-            return ViewController.serveBracketPage(req,res, TeamHelper.getTeamArrayList(), gameScore, gameScore2, gameScore3, winner1,winner2,winner3);
+            return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams(), gameScore, gameScore2, gameScore3, winner1,winner2,winner3);
 
         });
 
