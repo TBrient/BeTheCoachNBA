@@ -109,6 +109,9 @@ public class Team {
         score1 += (int) (rand1);
         answer.add(score/4);
         answer.add(score1/4);
+        if(score1 == score){
+            score1++;
+        }
         return answer;
     }
 
