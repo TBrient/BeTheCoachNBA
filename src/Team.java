@@ -10,7 +10,7 @@ public class Team {
     private ArrayList<Player> team = new ArrayList<>();
     private int win, loss, rating;
     private String name;
-    private int tempLoss;
+    private int tempLoss, tempWin;
 
     public Team(ArrayList<Player> team, String name) {
         this.team = team;
@@ -23,8 +23,6 @@ public class Team {
     public String getName() {
         return name;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
@@ -46,43 +44,50 @@ public class Team {
                 return o2.getRating() - o1.getRating();
             }
         });
-
-        for (int i = 0; i < teams.size() / 2; i++) {
+        for (int i = 0; i < teams.size()/2; i++) {
             if (i < 5) {
-                tempLoss = teams.get(i).getLoss();
-                teams.get(i).setLoss((int) (Math.random() * 5 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12 - (teams.get(i).getLoss() - tempLoss) + teams.get(i).getWin());
+                teams.get(i).setTempLoss(teams.get(i).getLoss());
+                teams.get(i).setTempWin(teams.get(i).getWin());
+                teams.get(i).setLoss((int) (Math.random() * 5) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 - (teams.get(i).getLoss() - teams.get(i).getTempLoss()) + teams.get(i).getWin());
             } else if (i < 10) {
-                tempLoss = teams.get(i).getLoss();
-                teams.get(i).setLoss((int) (Math.random() * 7 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12 - (teams.get(i).getLoss() - tempLoss) + teams.get(i).getWin());
-            } else if (i < teams.size() / 2) {
-                tempLoss = teams.get(i).getLoss();
-                teams.get(i).setLoss((int) (Math.random() * 9 ) + teams.get(i).getLoss());
-                teams.get(i).setWin(12 - (teams.get(i).getLoss() - tempLoss) + teams.get(i).getWin());
+                teams.get(i).setTempLoss(teams.get(i).getLoss());
+                teams.get(i).setTempWin(teams.get(i).getWin());
+                teams.get(i).setLoss((int) (Math.random() * 7) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 - (teams.get(i).getLoss() - teams.get(i).getTempLoss()) + teams.get(i).getWin());
+            } else if (i < 15) {
+                teams.get(i).setTempLoss(teams.get(i).getLoss());
+                teams.get(i).setTempWin(teams.get(i).getWin());
+                teams.get(i).setLoss((int) (Math.random() * 9) + teams.get(i).getLoss());
+                teams.get(i).setWin(12 - (teams.get(i).getLoss() - teams.get(i).getTempLoss()) + teams.get(i).getWin());
+
             }
         }
+
+
+
         for (int i = teams.size()/2; i < teams.size(); i++) {
+            teams.get(i).setTempLoss(teams.get(i).getLoss());
+            teams.get(i).setTempWin(teams.get(i).getWin());
             teams.get(i).setLoss(teams.get(teams.size() - i-1).getWin());
             teams.get(i).setWin(teams.get(teams.size() - i-1).getLoss());
         }
-        for (int i = 0; i < teams.size() - 1; i++) {
+        for (int i = 0; i < teams.size()-1; i++) {
             int mutate = (int) (Math.random() * 100);
-            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2 && teams.get(i + 1).getWin() > 2 && teams.get(i + 1).getLoss() > 2) {
-                if (mutate > 25 && mutate < 50) {
+            if (teams.get(i).getWin() > 2 && teams.get(i).getLoss() > 2 && teams.get(i + 1).getWin() > 2 && teams.get(i + 1).getLoss() > 2
+                    && teams.get(i).getWin() - teams.get(i).getTempWin()>2 && teams.get(i+1).getWin() - teams.get(i+1).getTempWin()>2
+                    && teams.get(i).getLoss() - teams.get(i).getTempLoss()>2 && teams.get(i+1).getLoss() - teams.get(i+1).getTempLoss()>2) {
+                if (mutate > 0 && mutate < 50) {
                     teams.get(i).setLoss(teams.get(i).getLoss() - 2);
                     teams.get(i).setWin(teams.get(i).getWin() + 2);
                     teams.get(i + 1).setLoss(teams.get(i + 1).getLoss() + 2);
                     teams.get(i + 1).setWin(teams.get(i + 1).getWin() - 2);
+
                 }
-                if (mutate > 0 && mutate < 25) {
-                    teams.get(i).setLoss(teams.get(i).getLoss() + 2);
-                    teams.get(i).setWin(teams.get(i).getWin() - 2);
-                    teams.get(i + 1).setLoss(teams.get(i + 1).getLoss() - 2);
-                    teams.get(i + 1).setWin(teams.get(i + 1).getWin() + 2);
-                }
+
             }
         }
+
         Collections.sort(teams, new Comparator<Team>() {
             @Override
             public int compare(Team o1, Team o2) {
@@ -142,5 +147,20 @@ public class Team {
 
     public void endYear() {
 
+    }
+
+    public int getTempLoss() {
+        return tempLoss;
+    }
+
+    public void setTempLoss(int tempLoss) {
+        this.tempLoss = tempLoss;
+    }
+    public int getTempWin() {
+        return tempWin;
+    }
+
+    public void setTempWin(int tempWin) {
+        this.tempWin = tempWin;
     }
 }

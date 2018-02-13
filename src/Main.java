@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by student on 12/19/17.
@@ -247,7 +249,17 @@ public class Main {
         Team Washington_Wizards = new Team(Washington_Wizards_Players, "Washington Wizards");
         allTeams.add(Washington_Wizards);
 
-
+        Collections.sort(allTeams, new Comparator<Team>() {
+            @Override
+            public int compare(Team o1, Team o2) {
+                //check if right order
+                return o2.getRating() - o1.getRating();
+            }
+        });
+        for (int i = 0; i <allTeams.size() ; i++) {
+            System.out.println(allTeams.get(i).getName());
+            System.out.println(allTeams.get(i).getRating());
+        }
 
     }
 }
