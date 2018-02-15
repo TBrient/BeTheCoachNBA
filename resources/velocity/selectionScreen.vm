@@ -18,7 +18,11 @@
 #foreach($teams in $teamSplit)
     <td valign="top">
         #foreach($team in $teams)
-            <input type="radio" name="teamSelection" value="$team.getName()" >$team.getName()<br>
+            #if ($team.getName() == "Hiami Meat")
+                <input type="radio" name="teamSelection" value="$team.getName()" checked="checked">$team.getName()<br>
+            #else
+                <input type="radio" name="teamSelection" value="$team.getName()" >$team.getName()<br>
+            #end
         #end
     </td>
 #end
@@ -33,7 +37,7 @@
 <center>
 <input type="text" name="managerName" placeholder="Enter Manager Name"><br>
 <input type="hidden" name="pickTeam" value="Select a Team">
-<input type="submit" name="btn1" value="Pick A Team">
+<input type="submit" class="button" name="btn1" value="Pick A Team">
 </center>
 </form>
 
