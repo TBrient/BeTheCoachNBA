@@ -10,6 +10,15 @@ public class UserData {
     private ArrayList <Player> randomReplace = new ArrayList<>();
     private int[] record = new int[2]; //Wins,Losses
     private int[] carrerRecord = new int[2]; //wins, losses
+    private Boolean tourneyPlay = false;
+
+    public Boolean getTourneyPlay() {
+        return tourneyPlay;
+    }
+
+    public void setTourneyPlay(Boolean tourneyPlay) {
+        this.tourneyPlay = tourneyPlay;
+    }
 
     public ArrayList<Player> getRandomReplace() {
         return randomReplace;

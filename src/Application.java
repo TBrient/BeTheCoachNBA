@@ -166,32 +166,41 @@ public class Application implements spark.servlet.SparkApplication{
             return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams());
         });
         post(Path.Web.BRACKET,       (req, res) -> {
+
+
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            ArrayList<Team> team = currentUserData.getAllTeams();
-            ArrayList<Integer> gameScore = team.get(0).gameScore(team.get(3));
-            ArrayList<Integer> gameScore2 = team.get(1).gameScore(team.get(2));
-            Team winner1;
-            Team winner2;
-            Team winner3;
-            if(gameScore.get(0)> gameScore.get(1))
-                 winner1 = team.get(0);
-            else
-                 winner1 = team.get(3);
+            if(!currentUserData.getTourneyPlay()) {
+                ArrayList<Team> team = currentUserData.getAllTeams();
+                ArrayList<Integer> gameScore = team.get(0).gameScore(team.get(3));
+                ArrayList<Integer> gameScore2 = team.get(1).gameScore(team.get(2));
+                Team winner1;
+                Team winner2;
+                Team winner3;
+                if (gameScore.get(0) > gameScore.get(1))
+                    winner1 = team.get(0);
+                else
+                    winner1 = team.get(3);
 
-            if(gameScore2.get(0)> gameScore2.get(1))
-                winner2 = team.get(1);
-            else
-                winner2 = team.get(2);
+                if (gameScore2.get(0) > gameScore2.get(1))
+                    winner2 = team.get(1);
+                else
+                    winner2 = team.get(2);
 
-            ArrayList<Integer> gameScore3 = winner1.gameScore(winner2);
-            if(gameScore3.get(0)> gameScore3.get(1))
-                winner3 = winner1;
-            else
-                winner3 = winner2;
+                ArrayList<Integer> gameScore3 = winner1.gameScore(winner2);
+                if (gameScore3.get(0) > gameScore3.get(1))
+                    winner3 = winner1;
+                else
+                    winner3 = winner2;
+
+                currentUserData.setTourneyPlay(true);
 
 
-            return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams(), gameScore, gameScore2, gameScore3, winner1,winner2,winner3);
+                return ViewController.serveBracketPage(req, res, currentUserData.getAllTeams(), gameScore, gameScore2, gameScore3, winner1, winner2, winner3);
 
+            }else{
+                res.redirect(Path.Web.ROSTER);
+                return null;
+            }
         });
 
 //        redirect.get("*", Path.Web.SELECTION);
