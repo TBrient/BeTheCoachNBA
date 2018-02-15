@@ -48,7 +48,7 @@ public class ViewController {
             for (int i = 0; i < 5; i++) {
                 int rand = (int) (Math.random() * replacements.size());
                 replacementsRandom.add(replacements.get(rand));
-                replacements.remove(rand);
+//                replacements.remove(rand);
             }
             userData.setRandomReplace(replacementsRandom);
         }    //}

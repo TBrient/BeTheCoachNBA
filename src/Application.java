@@ -134,9 +134,10 @@ public class Application implements spark.servlet.SparkApplication{
                         }
 
                     }
-                    for (int j = 0; j < TeamHelper.getReplacements().size(); j++) {
-                        if (results[i].equals(TeamHelper.getReplacements().get(j).getName())) {
-                            temp.add(TeamHelper.getReplacements().get(j));
+                    for (int j = 0; j < currentUserData.getUserReplacements().size(); j++) {
+                        if (results[i].equals(currentUserData.getUserReplacements().get(j).getName())) {
+                            temp.add(currentUserData.getUserReplacements().get(j));
+                            currentUserData.getUserReplacements().remove(j);
                         }
                     }
 
