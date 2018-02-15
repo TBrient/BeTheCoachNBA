@@ -140,7 +140,5 @@ public class Team {
         this.loss = loss;
     }
 
-    public void endYear() {
 
-    }
 }

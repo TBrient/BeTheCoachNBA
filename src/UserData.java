@@ -9,6 +9,7 @@ public class UserData {
     private Boolean pickFive;
     private ArrayList <Player> randomReplace = new ArrayList<>();
     private int[] record = new int[2]; //Wins,Losses
+    private int[] carrerRecord = new int[2]; //wins, losses
 
     public ArrayList<Player> getRandomReplace() {
         return randomReplace;
@@ -66,6 +67,20 @@ public class UserData {
     public void endYear(){
         record[0] = userTeam.getWin();
         record[1] = userTeam.getLoss();
+        carrerRecord[0] += record[0];
+        carrerRecord[1] += record[1];
+        record[0] = 0;
+        record[1] = 0;
+        userTeam.setLoss(0);
+        userTeam.setWin(0);
+        for (int i = 0; i <5 ; i++) {
+            userTeam.getTeam().get(i).updateRating();
+        }
+        for (int i = 0; i < 30; i++) {
+            getAllTeams().get(i).setWin(0);
+            getAllTeams().get(i).setLoss(0);
+
+        }
 
     }
 }
