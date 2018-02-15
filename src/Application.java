@@ -199,6 +199,7 @@ public class Application implements spark.servlet.SparkApplication{
 
             }else{
                 res.redirect(Path.Web.ROSTER);
+                currentUserData.endYear();
                 return null;
             }
         });

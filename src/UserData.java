@@ -91,6 +91,9 @@ public class UserData {
             //eat it jeremy
 
         }
+        pickFive = false;
+        tourneyPlay = false;
+        randomReplace.clear();
 
     }
 }
