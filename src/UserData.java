@@ -79,7 +79,6 @@ public class UserData {
         for (int i = 0; i < 30; i++) {
             getAllTeams().get(i).setWin(0);
             getAllTeams().get(i).setLoss(0);
-            //eat it jeremy
 
         }
 
