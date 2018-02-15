@@ -90,6 +90,7 @@ public class UserData {
             getAllTeams().get(i).setLoss(0);
 
         }
+        //more
         pickFive = false;
         tourneyPlay = false;
         randomReplace.clear();
