@@ -88,7 +88,6 @@ public class Application implements spark.servlet.SparkApplication{
 
 //
         get(Path.Web.SELECTION,       (req, res) -> {
-            System.out.println("caleld");
             Session oldSession = req.session(false);
             if (oldSession!=null && !oldSession.isNew()) {
                 oldSession.invalidate();
@@ -115,15 +114,18 @@ public class Application implements spark.servlet.SparkApplication{
 
         get(Path.Web.ROSTER,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            System.out.println(req.cookie("JSESSIONID"));
-            System.out.println(currentUserData.getManagerName());
-            return ViewController.serveRoster(req, res, currentUserData);
+            if (currentUserData != null) {
+                return ViewController.serveRoster(req, res, currentUserData);
+            } else {
+                res.redirect(Path.Web.SELECTION);
+                return null;
+            }
         });
 
         post(Path.Web.ROSTER,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             String[] results = req.queryParamsValues("playerSelection");
-            if(results.length == 5) {
+            if(results != null && results.length == 5) {
                 ArrayList<Player> temp = new ArrayList<>();
                 for (int i = 0; i < results.length; i++) {
                     for (int j = 0; j < currentUserData.getUserTeam().getTeam().size(); j++) {
@@ -151,9 +153,12 @@ public class Application implements spark.servlet.SparkApplication{
 
         get(Path.Web.GAMEPLAY,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            System.out.println(req.cookie("JSESSIONID"));
-            System.out.println(currentUserData.getManagerName());
-            return ViewController.serveGamePlay(req, res, currentUserData);
+            if (currentUserData != null) {
+                return ViewController.serveGamePlay(req, res, currentUserData);
+            } else {
+                res.redirect(Path.Web.SELECTION);
+                return null;
+            }
         });
 
         post(Path.Web.GAMEPLAY,       (req, res) -> {
@@ -163,7 +168,12 @@ public class Application implements spark.servlet.SparkApplication{
 
         get(Path.Web.BRACKET,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
-            return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams());
+            if (currentUserData != null) {
+                return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams());
+            } else {
+                res.redirect(Path.Web.SELECTION);
+                return null;
+            }
         });
         post(Path.Web.BRACKET,       (req, res) -> {
 
