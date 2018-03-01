@@ -293,6 +293,8 @@ public class TeamHelper {
         Replacements.add(new Player("Cox Ucker",74,19));
         Replacements.add(new Player("Craven Moorehead",73,18));
         Replacements.add(new Player("Dang Lin Wang",81,21));
+        Replacements.add(new Player("Cook Poo",75,19));
+
 
 
 
