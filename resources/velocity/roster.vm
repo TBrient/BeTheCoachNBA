@@ -16,6 +16,12 @@
 <tr><h3>Manager: $managerName</h3></tr><br>
 <tr><h3>$team.getName()</h3></tr><br>
 <tr>Pick 5 Players</tr>
+<tr>
+    <td>Name</td>
+    <td>Rating</td>
+    <td>Age</td>
+    <td></td>
+</tr>
 <!--IMPORTANT-->
 #foreach($player in $team.getTeam())
   <tr>
