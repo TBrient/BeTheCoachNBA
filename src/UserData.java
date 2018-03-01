@@ -82,13 +82,15 @@ public class UserData {
         record[1] = 0;
         userTeam.setLoss(0);
         userTeam.setWin(0);
-        for (int i = 0; i <5 ; i++) {
+        for (int i = 0; i < userTeam.getTeam().size() ; i++) {
             userTeam.getTeam().get(i).updateRating();
         }
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < userReplacements.size(); i++) {
+            userReplacements.get(i).updateRating();
+        }
+        for (int i = 0; i < getAllTeams().size(); i++) {
             getAllTeams().get(i).setWin(0);
             getAllTeams().get(i).setLoss(0);
-
         }
         //more
         pickFive = false;
