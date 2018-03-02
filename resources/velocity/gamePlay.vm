@@ -14,6 +14,12 @@
 <table>
 <tr>
 <td valign="top">
+<tr>
+  <td><b>Standing</b></td>
+  <td><b>Team Name</b></td>
+  <td><b>Wins</b></td>
+  <td><b>Losses</b></td>
+</tr>
 <!--IMPORTANT-->
 #set($index = 1)
 #foreach($team in $teams)
