@@ -254,23 +254,23 @@ public class TeamHelper {
     }
     public static ArrayList<Player> getReplacements(){
         ArrayList<Player> Replacements = new ArrayList<Player>();
-        Replacements.add(new Player("",78,19));
+        Replacements.add(new Player("Brook O'Neal",78,19));
         Replacements.add(new Player("Kan Ming Shoe",69,17));
-        Replacements.add(new Player("",72,18));
+        Replacements.add(new Player("Yannik Shaver",72,18));
         Replacements.add(new Player("Jengo Chifuniro",74,21));
         Replacements.add(new Player("Mwanajuma Gugulethu",73,20));
         Replacements.add(new Player("Poseidon Poncio",79,22));
-        Replacements.add(new Player("",77,18));
-        Replacements.add(new Player("",76,19));
-        Replacements.add(new Player("",80,21));
+        Replacements.add(new Player("James Arden",77,18));
+        Replacements.add(new Player("Addison Aristarkus",76,19));
+        Replacements.add(new Player("Duncan Arnbjörn",80,21));
         Replacements.add(new Player("Fitz Yakub",75,19));
         Replacements.add(new Player("Pip Len",80,20));
         Replacements.add(new Player("Dederick Lionel",70,18));
         Replacements.add(new Player("Deforest Herman",71,19));
-        Replacements.add(new Player("",81,17));
-        Replacements.add(new Player("",75,22));
+        Replacements.add(new Player("Jordan Jordan",81,17));
+        Replacements.add(new Player("Darius Troll",75,22));
         Replacements.add(new Player("",73,20));
-        Replacements.add(new Player("Wam",72,18));
+        Replacements.add(new Player("Wam",72,40));
         Replacements.add(new Player("Primo Baldo",76,16));
         Replacements.add(new Player("Lovel Yago",73,19));
         Replacements.add(new Player("Vishnu Ganesh",72,21));
@@ -290,19 +290,13 @@ public class TeamHelper {
         Replacements.add(new Player("Terrance Thomas",78,20));
         Replacements.add(new Player("Haydn Davies",80,17));
         Replacements.add(new Player("Jeremy Kunen",79,17));
-        Replacements.add(new Player("",74,19));
-        Replacements.add(new Player("",73,18));
-        Replacements.add(new Player("",81,21));
-
-
-
-
-        Replacements.add(new Player("",79,17));
-        Replacements.add(new Player("Oliver Klozoff",64,18));
+        Replacements.add(new Player("Corey Robetson",74,19));
+        Replacements.add(new Player("Mike Hopps",73,18));
+        Replacements.add(new Player("Bartolomeus Litchensteinberg",81,21));
+        Replacements.add(new Player("Johannes Chæbo",79,17));
+        Replacements.add(new Player("J Remi",64,18));
         Replacements.add(new Player("Brad Chad",76,22));
-
-
-        Replacements.add(new Player("",78,23));
+        Replacements.add(new Player("Jim Eriksson",78,23));
 
 
         return Replacements;
