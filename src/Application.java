@@ -140,7 +140,6 @@ public class Application implements spark.servlet.SparkApplication{
                             currentUserData.getUserReplacements().remove(j);
                         }
                     }
-
                 }
                 currentUserData.getUserTeam().setTeam(temp);
                 res.redirect(Path.Web.GAMEPLAY);
