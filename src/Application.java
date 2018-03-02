@@ -214,7 +214,7 @@ public class Application implements spark.servlet.SparkApplication{
             }
         });
 
-        redirect.get("*", Path.Web.SELECTION);
+//        redirect.get("*", Path.Web.SELECTION);
 
         //Set up after-filters (called after each get/post)
         after("*",                   Filters.addGzipHeader);

@@ -3,10 +3,7 @@ import spark.Response;
 import util.Path;
 import util.ViewUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 /**
@@ -37,8 +34,7 @@ public class ViewController {
     public static String serveRoster(Request request, Response response, UserData userData){
         Map<String,Object> model = new HashMap<>();
 
-
-        ArrayList<Player> replacements = userData.getUserReplacements();
+        ArrayList<Player> replacements = (ArrayList<Player>)userData.getUserReplacements().clone();
 
        ArrayList<Player> replacementsRandom = new ArrayList<>();
         //if (pickFive) {
@@ -48,7 +44,7 @@ public class ViewController {
             for (int i = 0; i < 5; i++) {
                 int rand = (int) (Math.random() * replacements.size());
                 replacementsRandom.add(replacements.get(rand));
-//                replacements.remove(rand);
+                replacements.remove(rand);
             }
             userData.setRandomReplace(replacementsRandom);
         }    //}

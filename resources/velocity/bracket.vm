@@ -60,10 +60,21 @@
 	<ul class="round round-4">
 		<li class="spacer">&nbsp;</li>
 
-		<li class="game game-top winner">$!winner1.getName()<span>$!game3Score.get(0)</span></li>
-		<li class="game game-spacer">&nbsp;</li>
-		<li class="game game-bottom ">$!winner2.getName()<span>$!game3Score.get(1)</span></li>
-
+        #if($!game3Score.get(0))
+            #if($!game3Score.get(0) > $!game3Score.get(1))
+                <li class="game game-top winner">$!winner1.getName()<span>$!game3Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom ">$!winner2.getName()<span>$!game3Score.get(1)</span></li>
+            #elseif($!game3Score.get(0) < $!game3Score.get(1))
+                <li class="game game-top">$!winner1.getName()<span>$!game3Score.get(0)</span></li>
+                <li class="game game-spacer">&nbsp;</li>
+                <li class="game game-bottom winner">$!winner2.getName()<span>$!game3Score.get(1)</span></li>
+            #end
+        #else
+            <li class="game game-top">$!winner1.getName()<span>$!game3Score.get(0)</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom">$!winner2.getName()<span>$!game3Score.get(1)</span></li>
+        #end
 
 		<li class="spacer">&nbsp;</li>
 	</ul>
