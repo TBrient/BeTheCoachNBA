@@ -254,23 +254,23 @@ public class TeamHelper {
     }
     public static ArrayList<Player> getReplacements(){
         ArrayList<Player> Replacements = new ArrayList<Player>();
-        Replacements.add(new Player("Holden Mugroin",78,19));
+        Replacements.add(new Player("",78,19));
         Replacements.add(new Player("Kan Ming Shoe",69,17));
-        Replacements.add(new Player("Hugh Ganus",72,18));
+        Replacements.add(new Player("",72,18));
         Replacements.add(new Player("Jengo Chifuniro",74,21));
         Replacements.add(new Player("Mwanajuma Gugulethu",73,20));
         Replacements.add(new Player("Poseidon Poncio",79,22));
-        Replacements.add(new Player("Wilma Dikphit",77,18));
-        Replacements.add(new Player("Barry McKockinner",76,19));
-        Replacements.add(new Player("Duncan McKockinner",80,21));
+        Replacements.add(new Player("",77,18));
+        Replacements.add(new Player("",76,19));
+        Replacements.add(new Player("",80,21));
         Replacements.add(new Player("Fitz Yakub",75,19));
         Replacements.add(new Player("Pip Len",80,20));
         Replacements.add(new Player("Dederick Lionel",70,18));
         Replacements.add(new Player("Deforest Herman",71,19));
-        Replacements.add(new Player("Janis Markuss",81,17));
-        Replacements.add(new Player("Mike Hawk",75,22));
-        Replacements.add(new Player("Ben Dover",73,20));
-        Replacements.add(new Player("Mike Hunt",72,18));
+        Replacements.add(new Player("",81,17));
+        Replacements.add(new Player("",75,22));
+        Replacements.add(new Player("",73,20));
+        Replacements.add(new Player("Wam",72,18));
         Replacements.add(new Player("Primo Baldo",76,16));
         Replacements.add(new Player("Lovel Yago",73,19));
         Replacements.add(new Player("Vishnu Ganesh",72,21));
@@ -290,9 +290,9 @@ public class TeamHelper {
         Replacements.add(new Player("Terrance Thomas",78,20));
         Replacements.add(new Player("Haydn Davies",80,17));
         Replacements.add(new Player("Jeremy Kunen",79,17));
-        Replacements.add(new Player("Cox Ucker",74,19));
-        Replacements.add(new Player("Craven Moorehead",73,18));
-        Replacements.add(new Player("Dang Lin Wang",81,21));
+        Replacements.add(new Player("",74,19));
+        Replacements.add(new Player("",73,18));
+        Replacements.add(new Player("",81,21));
 
 
 
@@ -302,7 +302,7 @@ public class TeamHelper {
         Replacements.add(new Player("Brad Chad",76,22));
 
 
-        Replacements.add(new Player("Eric Tyledisfuncton",78,23));
+        Replacements.add(new Player("",78,23));
 
 
         return Replacements;
