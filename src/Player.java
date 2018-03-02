@@ -24,7 +24,7 @@ public class Player {
         age++;
 
         if (age < 28) {
-            rating += 2;
+            rating += 1;
         } else {
             rating -= 2;
         }
