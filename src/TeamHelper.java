@@ -269,7 +269,7 @@ public class TeamHelper {
         Replacements.add(new Player("Deforest Herman",71,19));
         Replacements.add(new Player("Jordan Jordan",81,17));
         Replacements.add(new Player("Darius Troll",75,22));
-        Replacements.add(new Player("",73,20));
+        Replacements.add(new Player("Herbert Higgins",73,20));
         Replacements.add(new Player("Wam",72,40));
         Replacements.add(new Player("Primo Baldo",76,16));
         Replacements.add(new Player("Lovel Yago",73,19));
