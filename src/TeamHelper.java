@@ -276,7 +276,7 @@ public class TeamHelper {
         Replacements.add(new Player("Vishnu Ganesh",72,21));
         Replacements.add(new Player("Plutarch Zion",75,20));
         Replacements.add(new Player("Gabe Brannon",76,19));
-        Replacements.add(new Player("Wendell Bobbie",72,18));
+        Replacements.add(new Player("Wendell Barnes",72,18));
         Replacements.add(new Player("Elwood Chad",70,20));
         Replacements.add(new Player("Oliver Moody",82,18));
         Replacements.add(new Player("Tyler Brient",79,21));
