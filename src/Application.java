@@ -205,7 +205,7 @@ public class Application implements spark.servlet.SparkApplication{
                 currentUserData.setTourneyPlay(true);
 
 
-                return ViewController.serveBracketPage(req, res, currentUserData.getAllTeams(), gameScore, gameScore2, gameScore3, winner1, winner2, winner3);
+                return ViewController.serveBracketPage(req, res, currentUserData, gameScore, gameScore2, gameScore3, winner1, winner2, winner3);
 
             }else{
                 res.redirect(Path.Web.ROSTER);

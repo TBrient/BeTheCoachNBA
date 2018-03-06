@@ -102,6 +102,9 @@
     #if(!$game1Score.get(0))
         <input type="submit" name="btn1" value="Play Playoffs">
     #else
+        #if($!userTeam.getName() && $!winner3.getName() == $!userTeam.getName())
+            <h3>Winner Winner Chicken Dinner!</h3><br>
+        #end
         <input type="submit" name="btn2" value="Next Season">
     #end
     </center>
