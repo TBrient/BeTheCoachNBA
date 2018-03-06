@@ -107,7 +107,7 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             score += team.get(i).getRating();
         }
-        score = score/4;
+        score = (int)(score/4.2);
         score1 += team1.getRating();
         Random j = new Random();
         double rand = j.nextGaussian() * 15;
@@ -127,7 +127,7 @@ public class Team {
         for (int i = 0; i < team.size(); i++) {
             rating += team.get(i).getRating();
         }
-        rating = rating / 5;
+        rating = (int)(rating / 4.3);
         return rating;
     }
 
