@@ -56,6 +56,7 @@ public class ViewController {
         model.put("team", userData.getUserTeam());
         model.put("replacements", userData.getRandomReplace());
         model.put("pickFive", userData.getPickFive());
+        model.put("careerRecord", (userData.getCarrerRecord()[0] + userData.getUserTeam().getWin()) + " - " + (userData.getCarrerRecord()[1] + userData.getUserTeam().getLoss()));
 
         return ViewUtil.render(request, model, Path.Template.ROSTER);
     }
@@ -70,6 +71,7 @@ public class ViewController {
 
         model.put("teams", userData.getAllTeams());
         model.put("myTeamName", userData.getUserTeam().getName());
+        model.put("careerRecord", (userData.getCarrerRecord()[0] + userData.getUserTeam().getWin()) + " - " + (userData.getCarrerRecord()[1] + userData.getUserTeam().getLoss()));
 
         return ViewUtil.render(request, model, Path.Template.GAMEPLAY);
     }
@@ -83,10 +85,10 @@ public class ViewController {
         return ViewUtil.render(request, model, Path.Template.HOME);
     };
 
-    public static String serveBracketPage(Request request, Response response, ArrayList<Team> teams) {
+    public static String serveBracketPage(Request request, Response response, UserData userData) {
 
         Map<String, Object> model = new HashMap<>();
-        model.put("teams", teams);
+        model.put("teams", userData.getAllTeams());
         ArrayList<Integer> fakeScore = new ArrayList<Integer>();
         Team fakeTeam = new Team(new ArrayList<Player>(), null);
         fakeScore.add(null);
@@ -98,9 +100,7 @@ public class ViewController {
         model.put("winner1", fakeTeam);
         model.put("winner2", fakeTeam);
         model.put("winner3", fakeTeam);
-
-
-
+        model.put("careerRecord", (userData.getCarrerRecord()[0] + userData.getUserTeam().getWin()) + " - " + (userData.getCarrerRecord()[1] + userData.getUserTeam().getLoss()));
 
 
         return ViewUtil.render(request, model, Path.Template.BRACKET);
@@ -117,14 +117,7 @@ public class ViewController {
         model.put("winner1", winner1);
         model.put("winner2", winner2);
         model.put("winner3", winner3);
-
-
-
-
-
-
-
-
+        model.put("careerRecord", (userData.getCarrerRecord()[0] + userData.getUserTeam().getWin()) + " - " + (userData.getCarrerRecord()[1] + userData.getUserTeam().getLoss()));
 
         return ViewUtil.render(request, model, Path.Template.BRACKET);
     };

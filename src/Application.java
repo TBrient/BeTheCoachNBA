@@ -169,7 +169,7 @@ public class Application implements spark.servlet.SparkApplication{
         get(Path.Web.BRACKET,       (req, res) -> {
             UserData currentUserData = userData.get(req.cookie("JSESSIONID"));
             if (currentUserData != null) {
-                return ViewController.serveBracketPage(req,res, currentUserData.getAllTeams());
+                return ViewController.serveBracketPage(req,res, currentUserData);
             } else {
                 res.redirect(Path.Web.SELECTION);
                 return null;
