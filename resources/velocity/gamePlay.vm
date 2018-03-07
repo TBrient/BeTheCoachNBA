@@ -7,6 +7,8 @@
 
 </center>
 
+<h6>Career Rating: $!careerRecord</h6>
+
 <br>
 <form method="POST">
 
@@ -14,6 +16,7 @@
 <table>
 <tr>
 <td valign="top">
+<h4>Career Rating: $!careerRecord</h4><br>
 <tr>
   <td><b>Standing</b></td>
   <td><b>Team Name</b></td>

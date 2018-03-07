@@ -7,12 +7,14 @@
 
 </center>
 
+
 <br>
 <form method="POST">
 
 <table>
 <tr>
 <td valign="top">
+<h4>Career Rating: $!careerRecord</h4><br>
 <table summary="Tournament Bracket">
     <tr>
     <td>

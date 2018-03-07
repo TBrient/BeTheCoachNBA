@@ -44,6 +44,10 @@ public class UserData {
         this.userReplacements = userReplacements;
     }
 
+    public int[] getCarrerRecord() {
+        return carrerRecord;
+    }
+
     public UserData() {
         allTeams = TeamHelper.getTeamArrayList();
         userReplacements = TeamHelper.getReplacements();
