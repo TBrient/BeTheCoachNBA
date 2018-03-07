@@ -22,14 +22,32 @@ public class Player {
     //Adds a year to the players age and updates their rating
     public int updateRating() {
         age++;
+        int rand = (int)(Math.random()*10);
 
-        if (age < 28) {
-            rating += 1;
-        } else {
-            rating -= 2;
+        if (rand <= 8) {
+            if (age < 28) {
+                rating += 1;
+            } else {
+                rating -= 2;
+            }
+            if(rand<=1){
+                if (age < 28) {
+                    rating += 1;
+                } else {
+                    rating -= 1;
+                }
+            }
+
         }
+        if(rand == 2){
+            if (age < 28) {
+                rating -= 1;
+            } else {
+                rating += 1;
+            }
+        }
+            return rating;
 
-        return rating;
     }
 
     public int getRating() {
